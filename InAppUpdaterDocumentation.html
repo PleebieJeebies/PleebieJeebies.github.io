@@ -1,24 +1,129 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  background-color: #f1f1f1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#center {
+  text-align: center;
+}
+
+.pushdown {
+  padding-top: 50px;
+}
+
+#navbar {
+  right: 0px;
+  top: 0px;
+  background-color: #333;
+  position: fixed;
+  width: 100%;
+  display: block;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.imageContainer > img:active {
+  width: 200%;
+  height: 200%;
+  max-width: 65%;
+}
+</style>
+</head>
+<nav id="navbar">
+	<a href="#top">About</a>
+	<a href="#install">Installation</a>
+	<a href="#hierarchy">Asset Files Hierarchy</a>
+</nav>
 <body>
+	<div class="pushdown"></div>
+	<div id="center">
+		<h1>Pleebie Jeebies Immediate In-App Updater for Google Play</h2>
 
-<h2>Sample Header</h2>
+		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+	</div>
 
-<p>Sample Text</p>
+	<p>This asset is for getting your game to check for an available update of your Android app 
+	on the Google Play Store.  The custom plugin and associated script will notify the user of 
+	an availabe update from within your game and give them the option of installing it.</p>
 
-<p><strong>Sample Bold Text</strong></p>
+	<p>The main functions of this asset are:</p>
+	<ul>
+		<li>Check for an available update on the Google Play Store automatically or via a 
+			button from within your app</li>
+		<li>Uses a native Android overlay for the update process showing the update details, 
+			including total size of the update, download progress as it downloads and 
+			installation progress once the download has completed</li>
+	</ul>
 
-<img src="PleebieJeebies_logo.png" alt="Sample Image Hover Name">
+	<p><b>Note</b>: When you publish your app as an <b>Android App Bundle</b>, the maximum allowed 
+	compressed download size of an app using in-app updates is <b>150MB</b>. In-app updates are 
+	not compatible with apps that use APK expansion files (<b>.obb files</b>).</p>
 
-<p>This is a sample link: <a href="https://policies.google.com/privacy?hl=en-US">Google Analytics</a></p>
+	<div class="pushdown" id="install"></div>
+	<h2>Installation</h2>
 
-<p>Sample List:</p>
-<ul>
-    <li>To facilitate our Service;</li>
-    <li>To provide the Service on our behalf;</li>
-    <li>To perform Service-related services; or</li>
-    <li>To assist us in analyzing how our Service is used.</li>
-</ul>
+	<ul>
+		<li>Download the asset from the package manager inside unity</li>
+		<li>Import the asset package into your project</li>
+		<li>Download the package for <b>Play In-App Update</b> from 
+			<a href="https://developers.google.com/unity/packages#google_play">Google</a></li>
+			<div class="imageContainer">
+				<img src="PlayInAppUpdates.png" alt="Play In App Updates on Google">
+			</div>
+		<li>Install the <b>Play In-App Update</b> package into your project</li>
+		<li>That is all you need to do, see configuration on how to use the asset in your project</li>
+	</ul>
+	
+	<div class="pushdown" id="hierarchy"></div>
+	<h2>Asset Files Hierarchy</h2>
 
+	<p>All the files for this asset are located under <b>Assets/PleebieJeebies/</b></p>
+	<p>This section covers what the various files in the asset are for.</p>
+	<div class="imageContainer">
+		<img src="FileHierarchy.png" alt="Asset File Hierarchy">
+	</div>
+	
+	<h3>Plugins Folder</h3>
+	<p>Inside the <b>Plugins/Android/</b> folder you will find the native Android plugin library with a .txt 
+	file that contains all the proguard rules. You should include these rules in your proguard 
+	file if you are using proguard rules in your project.</p>
+	
+	<h3>Prefabs Folder</h3>
+	<p>Inside the <b>Prefabs/</b> folder you will find two prefabs.  One is the <b>Immediate Updater</b> 
+	prefab.  Drag and drop this prefab into your project to use the asset.  The other prefab is 
+	the <b>UpdateButtonPopup</b> prefab, use this only if you want to use a button inside your app 
+	to check for updates.  If you just want automatic updates on app launch then all you need 
+	is the <b>Immediate Updater</b> prefab.</p>
+
+	<h3>Scenes Folder</h3>
+	<p>Inside the <b>Scenes/</b> folder is a simple demo scene that has both automatic updates and a 
+	button for manually checking updates implemented.</p>
+	
+	<h3>Scripts Folder</h3>
+	<p>Inside the <b>Scripts/</b> folder are three scripts.  The <b>ImmediateUpdater</b> script handles the 
+	main functionality of this asset.  The <b>MenuController</b> script is just for the quit button in the 
+	demo scene.  The <b>PopupController</b> script handles the functionality of the manual update 
+	button in the demo scene and the associated popups.</p>
+	
+	</br></br></br></br></br></br></br></br></br></br>
+	
 </body>
 </html>
