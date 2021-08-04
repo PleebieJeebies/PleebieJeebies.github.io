@@ -8,6 +8,7 @@ body {
   background-color: #f1f1f1;
   font-family: Content-font, Roboto, sans-serif;
   font-size: 20px;
+  padding-bottom: 250px;
 }
 
 #center {
@@ -57,14 +58,17 @@ li {
 	<a href="#top">About</a>
 	<a href="#install">Installation</a>
 	<a href="#hierarchy">Asset Files Hierarchy</a>
+	<a href="#config">Configuration</a>
+	<a href="#testingWO">Testing <b>without</b> Play App Signing</a>
+	<a href="#testingW">Testing <b>with</b> Play App Signing</a>
 </nav>
 <body>
 	<div class="pushdown"></div>
 	<div id="center">
 		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
 		<div> <!--style="float: right; padding-right: 175px;"-->
-			<h1>Pleebie Jeebies</h1>
-			<h1>Immediate In-App Updater for Google Play</h1>
+			<h1><a href="https://assetstore.unity.com/packages/slug/191048">Pleebie Jeebies</a></h1>
+			<h1><a href="https://assetstore.unity.com/packages/slug/191048">Immediate In-App Updater for Google Play</a></h1>
 		</div>
 	</div>
 
@@ -132,7 +136,105 @@ li {
 	demo scene.  The <b>PopupController</b> script handles the functionality of the manual update 
 	button in the demo scene and the associated popups.</p>
 	
-	</br></br></br></br></br></br></br></br></br></br>
+	
+	<div class="pushdown" id="config"></div>
+	<h2>Configuration</h2>
+	
+	<h3>Default Configuration</h3>
+	<p>Configuration of this asset is very simple.  If you want to have automatic updates on 
+	launch there is nothing you need to do as they are on by default.  To turn them off just 
+	uncheck the box labelled <b>Check For Update On Start</b> in the inspector.</p>
+	
+	<div class="imageContainer">
+		<img src="InspectorImage.png" alt="Default Configuration">
+	</div>
+	
+	<p>If you wish to use the popup system that is in the demo scene, just drag in the 
+	<b>UpdatePopupButton</b> prefab into the scene and link your Button and the PopupController 
+	to the fields on the <b>Immediate Updater</b> prefab in the inspector.</p>
+	
+	<h3>Custom Buttons</h3>
+	<p>If you wish to create your own button system from scratch to check for an update, then in 
+	the ImmediateUpdater script you will find a method called <b>ManualUpdate()</b>.  This method 
+	can be called by your custom button to initiate a check for an update.</p>
+	
+	<div class="imageContainer">
+		<img src="ManualUpdate.png" alt="Manual Update">
+	</div>
+	
+	<p>Below the <b>ManualUpdate()</b> Method are also the two methods used by the button system 
+	in the demo scene; edit these if you just wish to change the behavior of the demo scene 
+	button system.</p>
+	
+	<div class="imageContainer">
+		<img src="ImmediateUpdateCode.png" alt="Immediate Update Code">
+	</div>
+	
+	
+	<div class="pushdown" id="testingWO"></div>
+	<h2>Testing <b>without</b> Play App Signing</h2>
+	
+	<p>If <b>Play App Signing</b> is not enabled for your app which means that you are using your own 
+	keystore to upload and distribute your app or game to users via Google Play Store, then 
+	the easiest way to test the update functionality is to build an apk / app bundle directly from 
+	Unity and install on your test device, but keep in mind that you have these requirements:</p>
+	
+	<ul>
+		<li>In-app updates are available only to user accounts that own the app. So, make sure
+		the account you’re using has downloaded your app from Google Play at least once 
+		before using the account to test in-app updates.</li>
+		<li>Make sure that the app that you are testing in-app updates with has the same 
+		application ID / package name</li>
+		<li>Because Google Play can only update an app to a higher version code, make sure 
+		the app you are testing has a lower version code than the update version code.</li>
+		<li>Make sure the account is eligible and the Google Play cache is up to date. To do so,
+		while logged into the Google Play Store account on the test device, proceed as 
+		follows:</li>
+		<ul>
+			<li>Make sure you completely close the Google Play Store App</li>
+			<li>Open the Google Play Store app and go to the My Apps & Games tab</li>
+			<li>If the app you are testing doesn’t appear with an available update, check that
+			you’ve properly set up your testing tracks</li>
+		</ul>
+	</ul>
+	
+	
+	<div class="pushdown" id="testingW"></div>
+	<h2>Testing <b>with</b> Play App Signing</h2>
+	
+	<p>If <b>Play App Signing</b> is enabled for your app, you can test the integration in two ways.</p>
+	<p><b>First</b> by uploading apk / app bundle files directly to the Play Store Console in the Alpha 
+	channel and use this channel to download the update and test the app. The downside of 
+	this method is that you will have to update your <b>versionCode</b> every time when you want to
+	test changes in the integration. If it's not a big deal for you I would prefer to go with this 
+	way.</p>
+	<p>Second way is by using the Internal App-Sharing option from the Play Store Console. You 
+	can read more about it here: 
+	<a href="https://support.google.com/googleplay/android-developer/answer/9844679">Google Play Android Support</a></p>
+	<p>With this method, on your test device, make sure you've already installed a version of your app that meets 
+	the following requirements:</p>
+	<ul>
+		<li>The app was installed using an internal app sharing URL</li>
+		<li>Supports in-app updates</li>
+		<li>Uses a version code that's lower than the updated version of your app</li>
+	</ul>
+	
+	<p>Follow the Play Console instructions on how to <b>share your app internally</b>. Make sure you
+	upload a version of your app that uses a version code that's higher than the one you have 
+	already installed on the test device.</p>
+	<p>On the test device, only click the internal app-sharing link for the updated version of your 
+	app. <b>Do not install the app</b> from the Google Play Store page you see after clicking the 
+	link.</p>
+	<p>Open the app from the device's app drawer or home screen. The update should now be 
+	available to your app, and you can test your implementation of in-app updates.</p>
+	<p>You can read more about this topic in Google's documentation: 
+	<a href="https://developer.android.com/guide/playcore/in-app-updates#internal-app-sharing">Google Guide to Internal App Sharing</a></p>
+	<p>If there is an issue with your implementation or you are facing an issue you can 
+	always reach us via our support email: <a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a>.</p>
+	
+	<div id="center">
+		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+	</div>
 	
 </body>
 </html>
