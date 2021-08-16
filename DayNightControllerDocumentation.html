@@ -55,7 +55,7 @@ li {
 </style>
 </head>
 <nav id="navbar">
-	<a href="#top">About</a>
+	<a href="#about">About</a>
 	<a href="#hierarchy">Asset Files Hierarchy</a>
 	<a href="#config">Configuration</a>
 	<a href="#coloring">Changing Coloring</a>
@@ -70,10 +70,13 @@ li {
 		</div>
 	</div>
 
-	<p>This asset provides a simple way to add a day and night cycle to your 3D landscape. 
-	By default, it can also control lighting in the scene to turn off during the day and 
-	back on at night. This setting can be turned off via checkbox if you would like to control 
-	lighting via other means.</p>
+	<div class="pushdown" id="about"></div>
+	<h2>About</h2>
+	
+	<p>The Day, Night, and Light Controller asset provides a simple way to add and control day 
+	and night cycles in your 3D landscape scene. By default, this asset can also control lighting 
+	in the scene to turn off during the day and back on at night. This setting can be turned off 
+	by the use of a checkbox if you would like to control lighting through other means.</p>
 
 	<p>The main functions of this asset are:</p>
 	<ul>
@@ -87,96 +90,103 @@ li {
 	<div class="pushdown" id="hierarchy"></div>
 	<h2>Asset Files Hierarchy</h2>
 
-	<p>This section will cover what each file folder contains in the asset.</p>
 	<p>All files are located under <b>Assets/PleebieJeebies/</b></p>
 	<div class="imageContainer">
 		<img src="DayNight/DayNightFileHierarchy.png" alt="Asset File Hierarchy">
 	</div>
 	
 	<h3>Prefabs Folder</h3>
-	<p>In this folder you will find the DayNightAndLightController prefab as well as three spot 
-	light prefabs which all are used in the scene. The controller prefab can be dragged in to any 
-	scene in your project to start using it. This prefab also comes with its own Directional 
-	Light; you should only ever have one in your scene. If you already have a Directional Light 
-	in your scene, just copy over the required properties to the one under the prefab and delete 
-	the old <b>otherwise you may get errors</b>.</p>
-	<p>The three spot light prefabs are just spot lights pre-built with settings that allow for 
-	casting shadows at different angles.</p>
+	<p>The <i>Prefabs</i> folder contains the <b>DayNightAndLightController</b> prefab and three 
+	spotlight prefabs used in the scene. The controller prefab can be dragged into any scene in 
+	your project to start using it.</p>
+	<p>The controller prefab also comes with its own directional light; you should only have one 
+	in your scene otherwise you may get undesired results.</br>If you already have a directional 
+	light in your scene with your desired settings, just copy over the light component properties 
+	to the directional light contained in the controller prefab, along with any other components 
+	on your directional light, and delete any other directional lights in the scene.</p>
+	<p>The three spotlight prefabs are spotlights pre-built with settings that allow for casting 
+	shadows at different angles.</p>
 
 	<h3>Scenes Folder</h3>
-	<p>This folder has a demo scene to display the day and night cycle along with lighting that turns 
-	on and off depending on the time of day.</p>
+	<p>The <i>Scenes</i> folder contains a demonstration (demo) scene that displays the day and night 
+	cycle and lighting that turns on and off depending on the time of day. Coloring is 
+	controlled by a preset. The <i>Scripts Folder</i> section will cover where to find these presets.</p>
 	
 	<h3>Scripts Folder</h3>
-	<p>This folder contains two scripts and another folder: the LightManager script houses the 
-	functionality of this asset and the LightPreset script is a unity scriptable object to allow 
-	for easily creating color gradients used in the manager. The LightPresets folder contains two 
-	presets which are also used in the scene: one for the day and night cycle coloring, the other 
-	for spot light coloring.</p>
+	<p>The <i>Scripts</i> folder contains two scripts and a folder: the <b>LightManager</b> script is the 
+	functionality of this asset and the <b>LightPreset</b> script is a Unity scriptable object to 
+	allow for easily creating color gradients used in the manager.</p>
+	<p>The <b>LightPresets</b> folder contains two presets, which are also used in the scene: one 
+	for the day and night cycle coloring, the other for spot light coloring. To change this 
+	coloring, see the <a href="#coloring">Changing Coloring</a> section.</p>
 	
 	
 	<div class="pushdown" id="config"></div>
 	<h2>Configuration</h2>
 	
-	<p>You don’t have to configure anything on the prefab as it works by simply dragging it in 
-	to any scene, but this section will cover the variables and modifiers used on the day, night, 
-	and light controller prefab.</p>
+	<p>The configuration section covers the variables and modifiers used on the day, 
+	night, and light controller prefab.</p>
+	<p>You do not have to manually configure anything on the controller prefab as it functions 
+	by simply dragging it into any scene.</p>
 	
 	<div class="imageContainer">
 		<img src="DayNight/DayNightInspector.png" alt="Configuration">
 	</div>
 	
-	<p>Directional Light – this variable is set to contain the Directional Light object you 
-	would like to use in the scene. By default, it is set to the one in the prefab, but you can 
-	set your own if you wish.</p>
-	<p>Day Night Preset – this variable contains a LightPreset scriptable object set to change 
-	the scene coloring for the day and night cycle. You should explore this preset and change 
-	the coloring to match your desired output. Read the next section on how to do this.</p>
-	<p>Lamp Preset – this variable contains a LightPreset scriptable object for setting the 
-	lights on during the night time of the cycle.</p>
-	<p>Time Of Day – this variable represents the current minute of the cycle the prefab is in 
-	currently. The range is between 0 and 1440 (24 x 60) that being how many minutes are in a 
-	real day. 0 being 0:00am or midnight and 1440 being 11:59pm or the minute before midnight.</p>
-	<p>Sun Direction – changing this value will allow you to control where the ‘sun’ rises and 
-	sets. This means the value can be changed between 0 and 360 as that is the full rotation of 
-	a circle, anything more will just continue the same rotation.</p>
-	<p>Time Multiplier – this value sets the speed at which the Time Of Day is calculated. 
-	Leaving it at 1 means one minute is one real life second. Higher than 1 means time will go 
-	by quicker and lower means slower. This means at 1, a full cycle will take 24 real minutes, 
-	or at 60, 24 real seconds, or at 1/60 ie. 0.016 repeating, 24 real hours. You get the idea.</p>
-	<p>Control Lights – this Boolean value is set to true by default and allows the control of 
-	<b>all non-directional lights</b> in the current scene to work according to the day and night 
-	cycle simulated. It can be un-checked to make the prefab not control these lights. This 
-	will not stop the control of the directional light as that is the main ‘sun’ for the scene 
-	to simulate the cycle.</p>
+	<p><b>Directional Light</b> – Contains the directional light object you would like the controller 
+	prefab to use in the scene. By default, it is set to the directional light provided in the prefab.</p>
+	<p><b>Day Night Preset</b> – Contains a <b>LightPreset</b> scriptable object set to change the scene 
+	coloring for the day and night cycle. You should explore this preset object and change the 
+	coloring to match your desired output. Read the <a href="#coloring">Changing Coloring</a> section on how to do this.</p>
+	<p><b>Lamp Preset</b> – Contains a <b>LightPreset</b> scriptable object for turning on the lights 
+	during the night cycle.</p>
+	<p><b>Time Of Day</b> – The current minute of the cycle the prefab is in. The range is between 0 
+	and 1440 (24 x 60) equaling how many minutes are in a real day. 0 representing 0:00am or midnight 
+	and 1440 representing 11:59pm or the minute before midnight.</p>
+	<p><b>Sun Direction</b> – Control where the directional light or ‘sun’ rises and sets. The value 
+	can be changed between 0 and 360 representing the full rotation of a circle, anything more than 
+	360 continues the same rotation. The value you set is where the sun rises.</br>
+	For example, if the value is 0, but you want the sun to rise on the opposite side of the scene 
+	from where it is currently, set it to 180. 90 will be a quarter way around the scene from 0, and 
+	270 is three quarters around the scene from 0.</p>
+	<p><b>Time Multiplier</b> – Sets the speed at which the <b>Time Of Day</b> is calculated. Leaving it at 1 
+	means one minute is one real life second. Higher than 1 means time will go by quicker and lower 
+	than 1 means slower. For example, if the value is at 1, a full cycle takes 24 real minutes, or at 
+	60, 24 real seconds, or at 1/60 ie. 0.016 repeating, 24 real hours.</p>
+	<p><b>Control Lights</b> – Control <b>all non-directional lights</b> in the current scene to work 
+	according to the day and night cycle simulated. Toggle this off to make the prefab not control 
+	these lights. The <i>Control Lights</i> toggle does not stop the control of the directional light as that 
+	is the main ‘sun’ for the scene to simulate the cycle.</p>
 	
 	
 	<div class="pushdown" id="coloring"></div>
 	<h2>Changing Coloring</h2>
 	
-	<p>To change the color that is simulating the day and night cycle, you can look to the 
-	SunlightPreset file housed in PleebieJeebies/Scripts/LightPresets/.</p>
-	<p>Simply click on the color gradient boxes to change coloring used for the cycle.</p>
+	<p>To change the color simulating the day and night cycle, select the SunlightPreset file located 
+	in <b>PleebieJeebies/Scripts/LightPresets/</b></p>
+	<p>Use the color gradient boxes to change to a desired color palette.</p>
 	
 	<div class="imageContainer">
 		<img src="DayNight/SunlightPreset.png" alt="Sunlight Preset">
 	</div>
 	
-	<p>Ambient Colour – this is used for coloring of the render settings ambient lighting in 
-	the scene.</p>
-	<p>Directional Colour – this is used to set the amount of light or color given off by the 
-	directional light or ‘sun’.</p>
-	<p>Fog Colour – this is used for coloring of the render settings fog coloring in the scene.</p>
+	<p><b>Ambient Color</b> – Coloring of the render settings ambient lighting in the scene.</p>
+	<p><b>Directional Color</b> – Set the amount of light or color given off by the directional light 
+	or ‘sun’.</p>
+	<p><b>Fog Color</b> – Coloring of the render settings fog coloring in the scene.</p>
 	
 	</br>
 	
-	<p>To learn more about Unity lighting and rendering:
+	<p>To learn more about Unity lighting and rendering:</br>
 	<a href="https://learn.unity.com/tutorial/introduction-to-lighting-and-rendering">Unity Intro to Lighting and Rendering</a></p>
-	<p>If there is an issue with your implementation or you are facing an issue, you can always reach us via our support email: 
-	<a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a>.</p>
+	<p>If you are experiencing any issues, contact our support team at:</br>
+	<a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a></p>
 	
 	<div id="center">
 		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+		</br>
+		</br>
+		<a href="#top">Back to Top of Page</a>
 	</div>
 	
 </body>
