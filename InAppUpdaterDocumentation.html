@@ -56,9 +56,11 @@ li {
 </head>
 <nav id="navbar">
 	<a href="#top">About</a>
-	<a href="#install">Installation</a>
 	<a href="#hierarchy">Asset Files Hierarchy</a>
+	<a href="#install">Installation</a>
 	<a href="#config">Configuration</a>
+	<a href="#default">Default Configuration</a>
+	<a href="#buttons">Custom Buttons</a>
 	<a href="#testingWO">Testing <b>without</b> Play App Signing</a>
 	<a href="#testingW">Testing <b>with</b> Play App Signing</a>
 </nav>
@@ -67,23 +69,23 @@ li {
 	<div id="center">
 		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
 		<div> <!--style="float: right; padding-right: 175px;"-->
-			<h1><a href="https://assetstore.unity.com/packages/slug/191048">Pleebie Jeebies</a></h1>
-			<h1><a href="https://assetstore.unity.com/packages/slug/191048">Immediate In-App Updater for Google Play</a></h1>
+			<h1><a href="https://u3d.as/2q5T">Pleebie Jeebies</a></h1>
+			<h1><a href="https://u3d.as/2q5T">Immediate In-App Updater for Google Play</a></h1>
 		</div>
 	</div>
 
 	<div class="pushdown" id="about"></div>
 	<h2>About</h2>
 	
-	<p>The Immediate In-App Updater for Google Play asset is for getting your game to check for 
-	an available update of your Android app on the Google Play Store. The custom plugin and 
-	associated script will notify the user of an available update from within your game 
-	and give them the option of installing it.</p>
+	<p>The Pleebie Jeebies Immediate In-App Updater for Google Play asset is for getting your 
+	application to check for an available update of your <b>Android</b> app on the <b>Google Play Store</b>. 
+	The custom plugin and associated script will notify the user of an available update from 
+	within your app and give them the option of installing it.</p>
 
 	<p>The main functions of this asset are:</p>
 	<ul>
-		<li>Check for an available update on the Google Play Store automatically or via a 
-			button from within your app</li>
+		<li>Automatically check for an available update on the Google Play Store 
+		or via a button from within your application</li>
 		<li>Uses a native Android overlay for the update process showing the update details, 
 			including total size of the update, download progress as it downloads and 
 			installation progress once the download has completed</li>
@@ -93,28 +95,12 @@ li {
 	compressed download size of an app using in-app updates is <b>150MB</b>. In-app updates are 
 	not compatible with apps that use APK expansion files (<b>.obb files</b>).</p>
 
-	<div class="pushdown" id="install"></div>
-	<h2>Installation</h2>
-
-	<ul>
-		<li>Download the asset from the package manager inside unity</li>
-		<li>Import the asset package into your project</li>
-		<li>Download the package for <b>Play In-App Update</b> from 
-			<a href="https://developers.google.com/unity/packages#google_play">Google</a></li>
-			<div class="imageContainer">
-				<img src="Updater/PlayInAppUpdates.png" alt="Play In App Updates on Google"
-					length="400" width="600">
-			</div>
-		<li>Install the <b>Play In-App Update</b> package into your project</li>
-		<li>That is all you need to do, see configuration on how to use the asset in your project</li>
-	</ul>
-	
 	<div class="pushdown" id="hierarchy"></div>
 	<h2>Asset Files Hierarchy</h2>
 
-	<p>All the files for this asset are located under <b>Assets/PleebieJeebies/</b></p>
+	<p>All files are located under <b>Assets/PleebieJeebies/InAppUpdater/</b></p>
 	<div class="imageContainer">
-		<img src="Updater/FileHierarchy.png" alt="Asset File Hierarchy">
+		<img src="Updater/FileHierarchy.png" alt="Asset File Hierarchy" width="604" height="209">
 	</div>
 	
 	<h3>Plugins Folder</h3>
@@ -140,9 +126,36 @@ li {
 	button in the demo scene and the associated popups.</p>
 	
 	
+	<div class="pushdown" id="install"></div>
+	<h2>Installation</h2>
+
+	<ul>
+		<li>Download the asset from the Unity Editor <i>Package Manager</i> window 
+		(Window > Package Manager from the Unity Editor toolbar)</li>
+		<li>Import the asset package into your project</li>
+		<li>Download the package for <b>Play In-App Update</b> from 
+			<a href="https://developers.google.com/unity/packages#play_in-app_update">Google</a></li>
+			<div class="imageContainer">
+				<img src="Updater/PlayInAppUpdates.png" alt="Play In App Updates on Google"
+					length="375" width="575">
+			</div>
+		<li>Import the entirety of the <b>Play In-App Update</b> package in to your project, 
+		which may include the <b>External Dependency Manager</b></li>
+		<li>Depending on the version, you may see a popup requesting to <b>Enable Android Auto-resolution</b>; 
+		enable this to resolve any dependencies</li>
+		<div class="imageContainer">
+			<img src="Updater/AutoResolution.png" alt="Auto resolution request by Google Play"
+			width="302" length="182">
+		</div>
+		<li>Resolving dependencies may add files to your project, but that is all you need to do. 
+		See <a href="#config">configuration</a> on how to use the asset in your project</li>
+	</ul>
+	
+	
 	<div class="pushdown" id="config"></div>
 	<h2>Configuration</h2>
 	
+	<div id="default"></div>
 	<h3>Default Configuration</h3>
 	<p>Configuration of this asset is very simple. Automatic updates are on by default. 
 	To turn them off, just un-check the box labelled <b>Check For Update On Start</b> 
@@ -156,6 +169,7 @@ li {
 	<b>UpdatePopupButton</b> prefab into the scene and link your Button and the PopupController 
 	to the fields on the <b>Immediate Updater</b> prefab in the inspector.</p>
 	
+	<div id="buttons"></div>
 	<h3>Custom Buttons</h3>
 	<p>If you wish to create your own button system from scratch to check for an update, then in 
 	the ImmediateUpdater script you will find a method called <b>ManualUpdate()</b>.  This method 
