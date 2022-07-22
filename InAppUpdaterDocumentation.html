@@ -63,6 +63,7 @@ li {
 	<a href="#buttons">Custom Buttons</a>
 	<a href="#testingWO">Testing <b>without</b> Play App Signing</a>
 	<a href="#testingW">Testing <b>with</b> Play App Signing</a>
+	<a href="#faq">FAQ</a>
 </nav>
 <body>
 	<div class="pushdown"></div>
@@ -140,14 +141,45 @@ li {
 					length="375" width="575">
 			</div>
 		<li>Import the entirety of the <b>Play In-App Update</b> package in to your project, 
-		which may include the <b>External Dependency Manager</b></li>
+		which will include the <b>External Dependency Manager</b></li>
 		<li>Depending on the version, you may see a popup requesting to <b>Enable Android Auto-resolution</b>; 
 		enable this to resolve any dependencies</li>
 		<div class="imageContainer">
 			<img src="Updater/AutoResolution.png" alt="Auto resolution request by Google Play"
 			width="302" length="182">
 		</div>
-		<li>Resolving dependencies may add files to your project, but that is all you need to do. 
+		<li>You should end up with the following <i>GooglePlayPlugins</i> as well as the <i>ExternalDependencyManager Editor</i> 
+		version <b>1.2.169</b>, future or past versions are <b>not yet supported</b></li>
+		<div class="imageContainer">
+			<img src="Updater/ExternalDependencyManager.png" alt="Files that are imported"
+			width="302" length="182">
+		</div>
+		<li>After resolving dependencies, you should also end up with the android plugin <b>com.google.android.play.core-1.10.3.aar</b>. 
+		<u>Without the proper files, the updater will not work</u></li>
+		<div class="imageContainer">
+			<img src="Updater/PlayCore1.10.3.png" alt="Google Play core 1.10.3 plugin required"
+			width="302" length="182">
+		</div>
+		<li>If the resolver didn’t obtain the play core file, you can attempt to force it with: 
+		<i>Assets > External Dependency Manager > Android Resolver > Force Resolve</i></li>
+		<div class="imageContainer">
+			<img src="Updater/ForceResolve.png" alt="How to Force Android Resolve"
+				length="375" width="575">
+		</div>
+		<li>The resolver can cause errors, one I receive in <i>Unity 2020.3.36f1</i> is:</li>	
+		<div class="imageContainer">
+			<img src="Updater/PossibleGradleIssue.png" alt="Possible Gradle Issue in Unity"
+			width="302" length="182">
+		</div>
+		<li>The way I was able to resolve this issue:</li>
+		<div class="imageContainer">
+			<img src="Updater/PossibleGradleResolution.png" alt="Possible Resolution to above issue"
+				length="375" width="575">
+		</div>
+		<li>After unchecking and re-checking, you can attempt to Force Resolve Android Dependencies again, 
+		which should give you the file necessary to update properly</li>
+		<li>Once you have the proper files listed in <a href="#install">this section</a>, namely the android 
+		plugin <b>com.google.android.play.core-1.10.3.aar</b> that is all you need to do. 
 		See <a href="#config">configuration</a> on how to use the asset in your project</li>
 	</ul>
 	
@@ -245,7 +277,28 @@ li {
 	<p>Open the app from the device's app drawer or home screen. The update should now be 
 	available to your app, and you can test your implementation of in-app updates.</p>
 	<p>You can read more about this topic in Google's documentation:</br>
-	<a href="https://developer.android.com/guide/playcore/in-app-updates#internal-app-sharing">Google Guide to Internal App Sharing</a></p>
+	<a href="https://developer.android.com/guide/playcore/in-app-updates/test">Google Guide to Internal App Sharing</a></p>
+	
+	
+	<div class="pushdown" id="faq"></div>
+	<h2>Frequently Asked Questions (FAQ)</h2>
+	
+	<p><b>Q: </b><i>“Running the Updater on the Unity Editor is giving me an error, what’s the issue?”</i></p>
+	<p><b>A: </b>The Pleebie Jeebies In-App Updater is designed to be used only on an android device which is using 
+	Google Play Store for the app. It is expected to throw errors in the Unity editor. Following the installation and testing 
+	process carefully should result in an app which will update upon one being available to the user. 
+	See <a href="#top">About</a> for more information or one of the above testing sections on how to test the Updater in your app.</p>
+	
+	<p><b>Q: </b><i>“I’ve followed the test process, but my app is not updating, what’s the issue?”</i></p>
+	<p><b>A: </b>There are a number of possibilities:</p>
+	<ol>
+		<li>It could be that you didn’t update your app version before trying to test. The update won’t be triggered unless the version 
+		attempting to be updated is above the version installed. Or if you already updated your app via the Google Play Store, 
+		there won’t be an available update for the Updater to trigger.</li>
+		<li>If it is not your testing process, it is likely that you haven’t properly imported all files which are necessary for the Updater. 
+		See <a href="#install">Installation</a> for everything necessary and other possible issues.</li>
+	</ol>
+	
 	<p>If you are experiencing any issues, contact our support team at:</br>
 	<a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a></p>
 	
