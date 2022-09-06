@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0 250px 0 250px;
+  background-color: #f1f1f1;
+  font-family: Content-font, Roboto, sans-serif;
+  font-size: 20px;
+  padding-bottom: 250px;
+}
+
+#center {
+  text-align: center;
+}
+
+.pushdown {
+  padding-top: 50px;
+}
+
+#navbar {
+  right: 0px;
+  top: 0px;
+  background-color: #333;
+  position: fixed;
+  width: 100%;
+  display: block;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.imageContainer > img:active {
+  width: 200%;
+  height: 200%;
+  max-width: 65%;
+}
+
+li {
+  padding-bottom: 8px;
+}
+</style>
+</head>
+<nav id="navbar">
+	<a href="#about">About</a>
+	<a href="#files">Asset Files Hierarchy</a>
+	<a href="#install">Installation</a>
+	<a href="#config">Configuration</a>
+	<a href="#howto">How to Set Up Your Own Prefab</a>
+	<a href="#info">More Information</a>
+	<a href="#tips">Tips, Extras, and Notes</a>
+</nav>
+<body>
+	<div class="pushdown"></div>
+	<div id="center">
+		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+		<div> <!--style="float: right; padding-right: 175px;"-->
+			<h1><a href="https://u3d.as/2UM4">Pleebie Jeebies</a></h1>
+			<h1><a href="https://u3d.as/2UM4">Rotating and Flashing Light</a></h1>
+		</div>
+	</div>
+
+	<div class="pushdown" id="about"></div>
+	<h2>About</h2>
+	
+	<p>The Pleebie Jeebies Rotating and Flashing Light asset can control a light or object in many ways. 
+	This provides a simple way to add an alarm, siren, or emergency lighting to a scene. It also allows 
+	you to change the color of the lighting or control the light how you please, allowing the creator to invent their own uses for this asset.</p>
+
+	<p>The main functions of this asset are:</p>
+	<ul>
+		<li>Control any number of lights to rotate, flash, or change colors</li>
+		<li>Change an object’s mesh material to match lights being toggled or changing color</li>
+		<li>Control a game object to rotate in a direction of choice</li>
+		<li>Control an audio source to work with the light or object</li>
+	</ul>
+	
+	<p><b>NOTE:</b> The functionality of this asset will work in any <a href="https://docs.unity3d.com/Manual/render-pipelines.html">Unity Rendering Pipeline</a>, but some 
+	extra setup may be required for mesh material changes. Some <a href="https://docs.unity3d.com/Manual/built-in-render-pipeline.html">Built-in Rendering Pipeline (BRP)</a> and 
+	<a href="https://docs.unity3d.com/Manual/universal-render-pipeline.html">Universal Rendering Pipeline (URP)</a> materials and prefabs are provided, but for other pipelines or if 
+	the ones provided aren’t desired, new ones will have to be created.</p>
+
+	
+	<div class="pushdown" id="files"></div>
+	<h2>Asset Files Hierarchy</h2>
+	<p>All files are located under <b>Assets/PleebieJeebies/RotatingAndFlashingLight/</b></p>
+	<div class="imageContainer">
+		<img src="RotatingFlashingLight/FileHierarchy.png" alt="File hierarchy">
+	</div>
+	
+	<h3>Materials Folder</h3>
+	<p>Inside the <b>Materials/</b> folder, you will find two sets of <a href="https://docs.unity3d.com/Manual/Materials.html">Unity Materials</a>, one for the <a href="https://docs.unity3d.com/Manual/built-in-render-pipeline.html">Built-in Rendering Pipeline (BRP)</a> 
+	and another for the <a href="https://docs.unity3d.com/Manual/universal-render-pipeline.html">Universal Rendering Pipeline (URP)</a>. If needed, Materials for other pipelines will have to be created, 
+	but the existing ones can be used as a reference. These Unity Materials are used to change the coloring of the <a href="https://docs.unity3d.com/Manual/class-MeshRenderer.html">Unity Mesh Renderer</a> 
+	of any object set. There is a set of all the main colors with a transparency effect in two variants, one <a href="https://docs.unity3d.com/Manual/StandardShaderMaterialParameterEmission.html">Emissive</a> and other non-Emissive. 
+	These are and can be used to simulate the actual light object to look like it’s on or off. Go to <a href="#config">Configuration</a> for more detail on this asset 
+	or <a href="howto">How to Set Up Your Own Prefab</a> to see how to set up and use this asset.</p>
+	
+	<h3>Prefabs Folder</h3>
+	<p>Inside the <b>Prefabs/</b> folder you will find more folders containing low poly art style prefabs created with the idea to be used as templates 
+	or generate ideas for the user. These are also separated in to BRP and URP versions since different pipelines require different types of 
+	materials to be visible. These prefabs can be dragged and dropped in to any scene and work on their own or placed on to any prefab to add 
+	<a href="https://docs.unity3d.com/Manual/class-Light.html">Unity Lights</a> with the <i>PJ_Rotating and Flashing Light</i> script. For example is the <i>Emergency Lighting</i> folder which will contain multiple police 
+	lighting options, along with ambulance and fire truck ideas; put these on emergency vehicles and use them to have proper lighting. Or delete 
+	the mesh and use the Materials given to create your own design where the script controls the light. Other examples include: <i>Break-in Alarm, 
+	Color Switchers, Disco Balls, Light Shows, Light Bars, Meshes, Rotating and Flashing Lights, Simple Presets, and Spinning Colored Wheel</i>. 
+	There are also two Post-processing Profiles, one for BRP and another for URP which are used to create a bloom effect in their respective pipeline. 
+	See <a href="#info">More Information</a> for details about Post Processing.</p>
+	
+	<h3>Scenes Folder</h3>
+	<p>Inside the <b>Scenes/</b> folder are two demo scenes showing examples of prefabs being used. 
+	One scene which uses the BRP prefab variants and another using the URP prefab variants.</p>
+	
+	<h3>Scripts Folder</h3>
+	<p>Inside the <b>Scripts/</b> folder is the <i>PJ_Rotating and Flashing Light</i> script which is necessary 
+	for the functionality of this asset.</p>
+	
+	<h3>Sounds Folder</h3>
+	<p>Inside the <b>Sounds/</b> folder you will find royalty free mp3 files used in some of the prefabs to show how sounds can be controlled with the script. 
+	For example two types of police siren, ambulance siren, fire truck siren, and a break-in alarm.</p>
+	
+	<h3>URP Asset Files</h3>
+	<p>Inside the <b>URP Asset Files/</b> folder are the files I used when using URP as the selected rendering pipeline. 
+	These files can be altered in the inspector to change the graphic quality in various ways when using URP. 
+	If using your own URP asset files or any other rendering pipeline, these files can be ignored. 
+	See <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@15.0/manual/index.html">Unity’s URP overview</a> for details about URP and how to use it in your own project.</p>
+	
+	
+	<div class="pushdown" id="install"></div>
+	<h2>Installation</h2>
+
+	<ul>
+		<li>Download the asset inside the Unity Editor <i>Package Manager</i> window (Window > Package Manager from the Unity Editor toolbar)</li>
+		<li>Import the asset package into the project</li>
+		<li>See <a href="#config">Configuration</a> for more details about this asset, <a href="#howto">How to Set Up Your Own Prefab</a> for how to use the asset in your project, 
+		or simply place a prefab in to your scene to see how it works</li>
+	</ul>	
+	
+	
+	<div class="pushdown" id="config"></div>
+	<h2>Configuration</h2>
+	
+	<p>Any of the prefabs will function by being dragged in to any scene or on to another prefab. This section will cover the variables used on the <i>PJ_Rotating and Flashing Light</i> script 
+	and prefabs to better understand how to configure the script and create your own prefabs.</p>
+	<div class="imageContainer">
+		<img src="RotatingFlashingLight/ScriptInspector.png" alt="Script/asset in inspector">
+	</div>
+	<p><b>Light - </b>The <a href="https://docs.unity3d.com/Manual/class-Light.html">Unity Light Object</a> to be controlled by this script; this must be set to control a light</p>
+	<p><b>Object - </b>A <a href="https://docs.unity3d.com/Manual/GameObjects.html">Unity Game Object</a> to be controlled by this script; this must be set to control an object</p>
+	<p><b>Mesh - </b><a href="https://docs.unity3d.com/Manual/class-MeshRenderer.html">Mesh renderer</a> of an object to change material the same time the controlled light is toggled or changed color; must be set for <i>Do Material Color Change</i> to function</p>
+	<p><b>Audio Source - </b>Controls an attached <a href="https://docs.unity3d.com/Manual/class-AudioSource.html">Audio Source</a> to this script; must be set for the <i>Audio Settings</i> section to affect the Audio Source</p>
+	<p><b>Is Light Enabled On Awake - </b>Toggle the controlled light starting on or off</p>
+	<p><b>Light Color On Awake - </b>The color the controlled light will be set to on awake</p>
+	<p><b>Light Range On Awake - </b>Set the controlled light's range on awake</p>
+	<p><b>Light Spot Angle On Awake - </b>Set the controlled light's spot angle on awake</p>
+	<p><b>Light Intensity On Awake - </b>Set the controlled light's intensity on awake</p>
+	<p><b>Light Shadow Setting On Awake - </b>Set the controlled light's shadow setting on awake; can be off, soft, or hard shadows. See <a href="https://docs.unity3d.com/ScriptReference/LightShadows.html">Unity LightShadows</a> for more information</p>
+	<p><b>Rotation Speed - </b>Amount of rotation per second affecting the controlled light or object (360 is one rotation per second)</p>
+	<p><b>Rotation Direction - </b>3D Direction the light or object will rotate towards using <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></p>
+	<p><b>Do Light Rotating - </b>Toggle the controlled light to rotate or not</p>
+	<p><b>Do Object Rotating - </b>Toggle the controlled object to rotate or not</p>
+	<p><b>Do Semi Rotating - </b>Toggle whether or not to do semi rotations on a set interval; affects both light and object rotation</p>
+	<p><b>Semi Rotate Interval - </b>Amount of time before switching directions for a semi rotation</p>
+	<p><b>Do Random Rotation Direction - </b>Toggle whether or not to change the controlled light's rotation direction to a random Direction on a set interval; works with normal and semi rotation; affects both light and object rotator</p>
+	<p><b>Random Rotation Direction Interval - </b>Amount of time before the next random Direction selection</p>
+	<p><b>Do Light Flashing - </b>Toggle the controlled light to flash or not on a set interval</p>
+	<p><b>Flash Interval - </b>Amount of time before the controlled light flashes to on or off</p>
+	<p><b>Flash Offset - </b>Amount of time before the controlled light begins the flash interval</p>
+	<p><b>Do Light Color Switching - </b>Toggle the controlled light to change colors set in the variable <i>Light Colors For Color Switching</i> changing on a set interval</p>
+	<p><b>Light Color Switch Interval - </b>Amount of time before the controlled light changes color</p>
+	<p><b>Light Color Switch Offset - </b>Amount of time before the controlled light begins the color switch interval</p>
+	<p><b>Do Randomize Colors - </b>Setting this true will select the next color from the series at random, otherwise it will go in the order set starting from 0 (or top down)</p>
+	<p><b>Light Colors for Color Switching - </b>Colors used to switch to when <i>Do Light Color Switching</i> is toggled on</p>
+	<p><b>Do Material Color Change - </b>Toggle Mesh Renderer material to change with the light toggling or changing color (requires <i>Mesh, Mesh Disabled Materials</i>, and <i>Mesh Enabled Materials</i> to be setup)</p>
+	<p><b>Mesh Disabled Materials - </b>Material/Color the mesh will take upon the light being disabled; if used with <i>Do Light Color Switching</i>, the material colors should closely match the ones used in <i>Light Colors For Color Switching</i></p>
+	<p><b>Mesh Enabled Materials - </b>Material/Color the mesh will take upon the light being enabled; if used with <i>Do Light Color Switching</i>, the material colors should closely match the ones used in <i>Light Colors For Color Switching</i></p>
+	<p><b>Mute Audio On Awake - </b>Toggle the controlled Audio Source to be muted on awake</p>
+	<p><b>Play Audio On Awake - </b>Toggle the controlled Audio Source to play on awake</p>
+	<p><b>Loop Audio On Awake - </b>Toggle the controlled Audio Source to loop on awake</p>
+	<p><b>Audio Volume On Awake - </b>Set the volume of the controlled Audio Source on awake</p>
+	<p><b>Audio Pitch On Awake - </b>Set the pitch of the controlled Audio Source on awake</p>
+	<p><b>Audio Spatial Blend On Awake - </b>Set the <a href="https://docs.unity3d.com/ScriptReference/AudioSource-spatialBlend.html">spatial blend</a> of the controlled Audio Source to be 2D or 3D on awake</p>
+	<p><b>NOTE: </b>This may seem like a lot of variables, but most are for small tweaks to get the exact functionality desired. See <a href="#howto">How to Set Up Your Own Prefab</a> on how to set up your own prefab.</p>
+	
+	
+	<div id="howto"></div>
+	<h3>How to Set Up Your Own Prefab</h3>
+	
+	<p>You may discover the defined prefabs are not to your liking and you would like to set up your own version of the script. This section will cover how to do so.</p>
+	<ol>
+		<li>Under <b>Prefabs/Simple Presets/</b> there are some building blocks which can be used to start your creation. There is spot light, point light, and audio source presets which can be dragged or customized to your liking. There are also some quick script presets such as a simple flashing and/or rotating light to get started.</li>
+		<li>If you would like to start fresh, simply add the script component <i>PJ_RotatingAndFlashingLight</i> to any object you have in your scene. Most commonly, I prefer to have this script on a parent object of the light or object I am wanting to control, but this is not required.</li>
+		<li>Once you have your script component added, you can begin to add the objects you wish to be controlled under the <b>General Setup</b> section. Simply drag any Light or Game Object in to the Light or Object variable in the inspector so the script knows which should be controlled. You can also drag the object’s Mesh Renderer used to represent where the light is coming from in to the Mesh variable as it is necessary to change the material of the mesh with the light. In addition, you can also add an audio source to the variable if you wish that to be controlled.</li>
+		<li>From here you can get creative. Once your objects are set up, you can go through the list of variables on the script component and decide what you would like your set controlled objects to do.</li>
+	</ol>
+	<p><b>General Setup - </b>This section is referred to in the above list item #3. At least one of the variables in this section must be filled for the script to function in some way.</p>
+	<p><b>General Light Settings - </b>This section is for deciding the light settings of the controlled light; whether the light will start on or off, the initial color of the light, or how far, wide, or intense the controlled light will be. You can also set whether or not the light will cast shadows, which can be useful for mobile applications when resources are tight.</p>
+	<p><b>Rotation Settings - </b>This section is for all settings related to rotation affecting the controlled light and/or object. Turn rotation on or off specifically for the light or object, decide the speed and direction of the rotation, or set the rotation to be only a semi rotation allowing it to go back and forth on a set interval. Finally there is an option for random rotation which will change the direction of the rotation to a random direction on a set interval.</p>
+	<p><b>Light Flash Settings - </b>This section is to set whether or not the controlled light will flash on the set interval. You can also set an offset which will wait for the set time before starting the flash interval.</p>
+	<p><b>Light Color Switching Settings - </b>This section is for setting the controlled light to change colors on a set interval. Colors can be pre-set on the list <i>Light Colors for Color Switching</i>, when <i>Do Light Color Switching</i> is toggled, the controlled light will change in sequence starting from the top of the list on the set interval. This sequence can also be randomized or be set to wait with an offset.</p>
+	<p><b>Mesh Materials Setup - </b>This section is for deciding whether or not the object chosen as the controlled light’s mesh will have its material change with the light turning on or off or changing color. If desired, <i>Do Material Color Change</i> must be toggled, along with the <i>Mesh Enabled/Disabled Materials</i> lists be set to the materials desired. If used with <i>Do Light Color Switching</i>, the material colors chosen should closely match the ones used in <i>Light Colors For Color Switching</i>. There is a folder of materials given which can be used to fill these lists. See <a href="#files">Asset Files Hierarchy</a> for more information on Materials or the last tip in <a href="#tips">Tips, Extras, and Notes</a> for a Unity Editor tip on how to fill the materials lists quickly.</p>
+	<p><b>Audio Settings - </b>This section is for deciding the settings of the controlled audio source, if set. The audio can be set to be muted or played when appearing on the scene. It can also be looped, as well as have the volume or pitch changed for each audio source. Finally the spatial blend can be chosen which will determine if the audio can be heard throughout the entire scene or in a local 3D area. Click to read more about <a href="https://docs.unity3d.com/Manual/class-AudioSource.html">Unity Audio Sources</a> and <a href="https://docs.unity3d.com/ScriptReference/AudioSource-spatialBlend.html">spatial blend</a>.</p>
+	<p><b>NOTE: </b>The script component <i>PJ_RotatingAndFlashingLight</i> can be added to a game object as many times as desired; in fact, it is suggested for being able to control multiple lights or game objects at one time. Each script component can control one light, one game object, one object mesh, and one audio source. More components must be added per light or object wanting to be controlled.</p>
+	
+	
+	<div class="pushdown" id="info"></div>
+	<h3>More Information</h3>
+	
+	<p>Lighting and graphics in Unity can vary quite a bit depending on the pipeline and settings used. This asset will function in any pipeline, but may require some setup if wanting to switch a rendering mesh material along with the light. Some default BRP and URP materials are provided, but for other pipelines or if the ones provided aren’t desired, new ones will have to be created. In addition, Post Processing in any pipeline can make a big difference when wanting to make your scene look more realistic. </p>
+	<p>The scenes provided with this asset give examples of post processing used in the BRP or URP as post processing is setup differently for each pipeline. Profiles are also provided if you already have post processing setup on your scene.</p>
+	<p>Click for more information about <a href="https://learn.unity.com/tutorial/introduction-to-lighting-and-rendering">Unity Lighting</a>, <a href="https://docs.unity3d.com/Manual/Graphics.html">Unity Graphics</a>, <a href="https://docs.unity3d.com/Manual/render-pipelines.html">Unity Rendering Pipelines</a>, <a href="https://docs.unity3d.com/Manual/Materials.html">Unity Materials</a>, <a href="https://docs.unity3d.com/Manual/StandardShaderMaterialParameterEmission.html">Unity Material Emission</a>, <a href="https://docs.unity3d.com/Manual/PostProcessingOverview.html">Post Processing</a>, and <a href="https://docs.unity3d.com/Packages/com.unity.postprocessing@3.2/manual/Bloom.html">Post Processing Bloom</a>.</p>
+	<p>The script for the functionality of this asset does not have any error handling and this is intentional. Otherwise, the console would fill up with possible warnings and errors in cases where nothing is wrong as this script is very versatile. I decided a clean console is better than random garbage. This documentation is very detailed to attempt to reduce the case in which errors are thrown. If an error is thrown, it is likely because the <i>General Setup</i> section was not filled properly. See <a href="#config">Configuration</a> for more on individual settings or <a href="#howto">How to Set Up Your Own Prefab</a> for more information or how to setup the script component properly.</p>
+	<p><b>NOTE: </b><a href="https://docs.unity3d.com/Manual/CollidersOverview.html">Colliders</a> have been omitted from every prefab, so add them if they are desired.</p>
+	
+	
+	<div class="pushdown" id="tips"></div>
+	<h3>Tips, Extras, and Notes</h3>
+	
+	<p>This section will cover any tips for when working with the Unity Editor and/or this asset. These tips are not in any particular order and may or may not be helpful.</p>
+	<p>The following image shows an example of how this asset’s class controller can be used to apply changes to every object using this script in a scene. It also shows how to set a specific object to a script and control that object via code.</p>
+	<div class="imageContainer">
+		<img src="RotatingFlashingLight/TestScript.png" alt="Script showing sample code">
+	</div>
+	<p>Method calls are provided in cases where you would like to start one of the functions of this asset via code. Using the same logic from the code snippet above, you can call and start each main function with the following methods: <i>StartLightRotator (), StartObjectRotator(), StartLightFlasher ()</i>, and <i>StartLightColorSwitcher()</i>. This asset uses co-routines, so in cases where you would like to stop all script functions there is a method named <i>KillAllCoroutines()</i>. To free resources, the kill method is called when the object using the script component is destroyed, so no need to call it unless desired.</p>
+	<p><b>NOTE:</b> All Boolean and timer/interval variables can be changed during runtime which can be useful in testing or when changing properties in code. All other variables in the script are used during startup (on Awake) and nothing will happen if these are changed at runtime.</p>
+	<p>In the Unity Editor, you can change the rendering of lighting to be better or worse by going to: <i>Edit > Project Settings > Quality</i> OR <i>Graphics</i></p>
+	<p><b>NOTE:</b> at lower quality or graphic settings, some lights may not appear as desired as Unity can only render a certain number of lights depending on different settings. Less settings will be available when using anything other than the built-in rendering pipeline. These extra missing settings will be in the specific pipeline’s asset files.</p>
+	<p>When using other pipelines, lights have different settings and appearances and will require different settings to appear similarly to the BRP variant.</p>
+	<p>The alpha channel when picking a color on lights doesn’t affect the transparency as I imagine this is simulated via the intensity or brightness of the light. For this reason, there is also no black light and why darker colors have been omitted from the default materials provided.</p>
+	<p>Prefabs/Presets have been provided for a quick start when wanting to simply put something in a scene or on another prefab, but if only the functionality is desired for use on one of your own prefabs, you can copy the component in the inspector and paste component values anywhere else. You’ll simply just have to refill the <b>General Setup</b> section of the component with your own objects. For more info on <a href="https://docs.unity3d.com/560/Documentation/Manual/UsingComponents.html">Using Components in Unity</a>.</p>
+	<p>You can place a prefab in a scene, then <i>right click the prefab object in scene view > prefab > unpack completely</i> to be able to edit whatever you want from the prefab and reuse individual parts as you see fit.</p>
+	<p>When trying to link multiple objects (or materials) to a list in the inspector, you can save time by pressing the lock button on the top right of the inspector. This will lock the inspector to the current item you are focused on. Now hold CTRL and begin clicking the items you’d like added to the list. Once all desired items are selected, drag them to the list in the inspector and see the list populate with all the items. It even keeps it in the order of the way you selected it. <b>NOTE: Don’t forget to click the lock button again</b> otherwise the inspector will stay locked to the focused object you locked it to.</p>
+	
+	
+	</br>
+	
+	<p>If you are experiencing any issues, contact our support team at:</br>
+	<a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a></p>
+	
+	<div id="center">
+		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+		</br>
+		</br>
+		<a href="#top">Back to Top of Page</a>
+	</div>
+	
+</body>
+</html>
