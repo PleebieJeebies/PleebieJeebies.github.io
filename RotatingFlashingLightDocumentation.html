@@ -107,7 +107,7 @@ li {
 	but the existing ones can be used as a reference. These Unity Materials are used to change the coloring of the <a href="https://docs.unity3d.com/Manual/class-MeshRenderer.html">Unity Mesh Renderer</a> 
 	of any object set. There is a set of all the main colors with a transparency effect in two variants, one <a href="https://docs.unity3d.com/Manual/StandardShaderMaterialParameterEmission.html">Emissive</a> and other non-Emissive. 
 	These are and can be used to simulate the actual light object to look like it’s on or off. Go to <a href="#config">Configuration</a> for more detail on this asset 
-	or <a href="howto">How to Set Up Your Own Prefab</a> to see how to set up and use this asset.</p>
+	or <a href="#howto">How to Set Up Your Own Prefab</a> to see how to set up and use this asset.</p>
 	
 	<h3>Prefabs Folder</h3>
 	<p>Inside the <b>Prefabs/</b> folder you will find more folders containing low poly art style prefabs created with the idea to be used as templates 
@@ -196,8 +196,8 @@ li {
 	<p><b>NOTE: </b>This may seem like a lot of variables, but most are for small tweaks to get the exact functionality desired. See <a href="#howto">How to Set Up Your Own Prefab</a> on how to set up your own prefab.</p>
 	
 	
-	<div id="howto"></div>
-	<h3>How to Set Up Your Own Prefab</h3>
+	<div class="pushdown" id="howto"></div>
+	<h2>How to Set Up Your Own Prefab</h2>
 	
 	<p>You may discover the defined prefabs are not to your liking and you would like to set up your own version of the script. This section will cover how to do so.</p>
 	<ol>
@@ -217,7 +217,7 @@ li {
 	
 	
 	<div class="pushdown" id="info"></div>
-	<h3>More Information</h3>
+	<h2>More Information</h2>
 	
 	<p>Lighting and graphics in Unity can vary quite a bit depending on the pipeline and settings used. This asset will function in any pipeline, but may require some setup if wanting to switch a rendering mesh material along with the light. Some default BRP and URP materials are provided, but for other pipelines or if the ones provided aren’t desired, new ones will have to be created. In addition, Post Processing in any pipeline can make a big difference when wanting to make your scene look more realistic. </p>
 	<p>The scenes provided with this asset give examples of post processing used in the BRP or URP as post processing is setup differently for each pipeline. Profiles are also provided if you already have post processing setup on your scene.</p>
@@ -227,7 +227,7 @@ li {
 	
 	
 	<div class="pushdown" id="tips"></div>
-	<h3>Tips, Extras, and Notes</h3>
+	<h2>Tips, Extras, and Notes</h2>
 	
 	<p>This section will cover any tips for when working with the Unity Editor and/or this asset. These tips are not in any particular order and may or may not be helpful.</p>
 	<p>The following image shows an example of how this asset’s class controller can be used to apply changes to every object using this script in a scene. It also shows how to set a specific object to a script and control that object via code.</p>
@@ -242,7 +242,7 @@ li {
 	<p>The alpha channel when picking a color on lights doesn’t affect the transparency as I imagine this is simulated via the intensity or brightness of the light. For this reason, there is also no black light and why darker colors have been omitted from the default materials provided.</p>
 	<p>Prefabs/Presets have been provided for a quick start when wanting to simply put something in a scene or on another prefab, but if only the functionality is desired for use on one of your own prefabs, you can copy the component in the inspector and paste component values anywhere else. You’ll simply just have to refill the <b>General Setup</b> section of the component with your own objects. For more info on <a href="https://docs.unity3d.com/560/Documentation/Manual/UsingComponents.html">Using Components in Unity</a>.</p>
 	<p>You can place a prefab in a scene, then <i>right click the prefab object in scene view > prefab > unpack completely</i> to be able to edit whatever you want from the prefab and reuse individual parts as you see fit.</p>
-	<p>When trying to link multiple objects (or materials) to a list in the inspector, you can save time by pressing the lock button on the top right of the inspector. This will lock the inspector to the current item you are focused on. Now hold CTRL and begin clicking the items you’d like added to the list. Once all desired items are selected, drag them to the list in the inspector and see the list populate with all the items. It even keeps it in the order of the way you selected it. <b>NOTE: Don’t forget to click the lock button again</b> otherwise the inspector will stay locked to the focused object you locked it to.</p>
+	<p>When trying to link multiple objects (or materials) to a list in the inspector, you can save time by pressing the lock button on the top right of the inspector. This will lock the inspector to the current item you are focused on. Now hold CTRL and begin clicking the items you’d like added to the list. Once all desired items are selected, drag them to the list in the inspector and see the list populate with all the items. It even keeps it in the order of the way you selected it.</br><b>NOTE: Don’t forget to click the lock button again</b> otherwise the inspector will stay locked to the focused object you locked it to.</p>
 	
 	
 	</br>
