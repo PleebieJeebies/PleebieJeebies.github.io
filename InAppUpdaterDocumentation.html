@@ -106,9 +106,9 @@ li {
 		<div class="pushdown" id="hierarchy"></div>
 		<h2>Asset Files Hierarchy</h2>
 
-		<p>All files are located under <b>Assets/PleebieJeebies/InAppUpdater/</b></p>
+		<p>All files are located under <b>Assets/PleebieJeebies/ InAppUpdater/ (no spaces)</b></p>
 		<div class="imageContainer">
-			<img src="Updater/FileHierarchy.png" alt="Asset File Hierarchy" width="604" height="209">
+			<img src="Updater/FileHierarchy.png" alt="Asset File Hierarchy">
 		</div>
 		
 		<h3>Plugins Folder</h3>
@@ -144,44 +144,37 @@ li {
 			<li>Download the package <b>App Update (com.google.play.appupdate-1.7.0.unitypackage)</b> from Google: 
 				<a href="https://github.com/google/play-unity-plugins/releases/tag/v1.7.0">Google Github Play Core 1.7</a></li>
 				<div class="imageContainer">
-					<img src="Updater/PlayInAppUpdate1.7.png" alt="Play In App Updates on Google"
-						length="375" width="575">
+					<img src="Updater/PlayInAppUpdate1.7.png" alt="Play In App Updates on Google" height="50%" width="50%">
 				</div>
 			<li>Import the entirety of the <b>Play In-App Update</b> package in to your project, 
 			which will include the <b>External Dependency Manager</b></li>
 			<li>Depending on the version, you may see a popup requesting to <b>Enable Android Auto-resolution</b>; 
 			enable this to resolve any dependencies</li>
 			<div class="imageContainer">
-				<img src="Updater/AutoResolution.png" alt="Auto resolution request by Google Play"
-				width="302" length="182">
+				<img src="Updater/AutoResolution.png" alt="Auto resolution request by Google Play">
 			</div>
 			<li>You should end up with the following <i>GooglePlayPlugins</i> as well as the <i>ExternalDependencyManager Editor</i> 
 			version <b>1.2.169</b>, future or past versions are <b>not yet supported</b></li>
 			<div class="imageContainer">
-				<img src="Updater/ExternalDependencyManager.png" alt="Files that are imported"
-				width="302" length="182">
+				<img src="Updater/ExternalDependencyManager.png" alt="Files that are imported">
 			</div>
 			<li>After resolving dependencies, you should also end up with the android plugin <b>com.google.android.play.core-1.10.3.aar</b>. 
 			<u>Without the proper files, the updater will not work</u></li>
 			<div class="imageContainer">
-				<img src="Updater/PlayCore1.10.3.png" alt="Google Play core 1.10.3 plugin required"
-				width="302" length="182">
+				<img src="Updater/PlayCore1.10.3.png" alt="Google Play core 1.10.3 plugin required">
 			</div>
 			<li>If the resolver didn’t obtain the play core file, you can attempt to force it with: 
 			<i>Assets > External Dependency Manager > Android Resolver > Force Resolve</i></li>
 			<div class="imageContainer">
-				<img src="Updater/ForceResolve.png" alt="How to Force Android Resolve"
-					length="375" width="575">
+				<img src="Updater/ForceResolve.png" alt="How to Force Android Resolve" height="50%" width="50%">
 			</div>
 			<li>The resolver can cause errors, one I receive in <i>Unity 2020.3.36f1</i> is:</li>	
 			<div class="imageContainer">
-				<img src="Updater/PossibleGradleIssue.png" alt="Possible Gradle Issue in Unity"
-				width="302" length="182">
+				<img src="Updater/PossibleGradleIssue.png" alt="Possible Gradle Issue in Unity">
 			</div>
 			<li>The way I was able to resolve this issue:</li>
 			<div class="imageContainer">
-				<img src="Updater/PossibleGradleResolution.png" alt="Possible Resolution to above issue"
-					length="375" width="575">
+				<img src="Updater/PossibleGradleResolution.png" alt="Possible Resolution to above issue">
 			</div>
 			<li>After unchecking and re-checking, you can attempt to Force Resolve Android Dependencies again, 
 			which should give you the file necessary to update properly</li>
@@ -223,7 +216,7 @@ li {
 		button system.</p>
 		
 		<div class="imageContainer">
-			<img src="Updater/ImmediateUpdateCode.png" alt="Immediate Update Code">
+			<img src="Updater/ImmediateUpdateCode.png" alt="Immediate Update Code" height="50%" width="50%">
 		</div>
 		
 		
