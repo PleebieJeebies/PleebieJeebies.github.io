@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Immediate In-App Updater for Google Play Documentation by Pleebie Jeebies</title>
 <link rel="icon" type="image/x-icon" href="CompanyLogo.png">
 <style>
 body {
-  margin: 0 250px 0 250px;
   background-color: #f1f1f1;
   font-family: Content-font, Roboto, sans-serif;
   font-size: 20px;
-  padding-bottom: 250px;
+  padding: 115px 0 100px 0;
+  text-align: center;
 }
 
-#center {
-  text-align: center;
+#content {
+  max-width: 80%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pushdown {
@@ -37,7 +40,7 @@ body {
   text-align: center;
   padding: 15px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 #navbar a:hover {
@@ -45,10 +48,14 @@ body {
   color: black;
 }
 
+.imageContainer > img {
+  max-width: 100%;
+}
+
 .imageContainer > img:active {
   width: 200%;
   height: 200%;
-  max-width: 65%;
+  max-width: 100%;
 }
 
 li {
@@ -68,248 +75,244 @@ li {
 	<a href="#faq">FAQ</a>
 </nav>
 <body>
-	<div class="pushdown"></div>
-	<div id="center">
-		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
-		<div> <!--style="float: right; padding-right: 175px;"-->
-			<h1><a href="https://u3d.as/2q5T">Pleebie Jeebies</a></h1>
-			<h1><a href="https://u3d.as/2q5T">Immediate In-App Updater for Google Play</a></h1>
+	<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+	<div> <!--style="float: right; padding-right: 175px;"-->
+		<h1><a href="https://u3d.as/2q5T">Pleebie Jeebies</a></h1>
+		<h1><a href="https://u3d.as/2q5T">Immediate In-App Updater for Google Play</a></h1>
+	</div>
+
+	<div id="content">
+		<div class="pushdown" id="about"></div>
+		<h2>About</h2>
+		
+		<p>The Pleebie Jeebies Immediate In-App Updater for Google Play asset is for getting your 
+		application to check for an available update of your <b>Android</b> app on the <b>Google Play Store</b>. 
+		The custom plugin and associated script will notify the user of an available update from 
+		within your app and give them the option of installing it.</p>
+
+		<p>The main functions of this asset are:</p>
+		<ul>
+			<li>Automatically check for an available update on the Google Play Store 
+			or via a button from within your application</li>
+			<li>Uses a native Android overlay for the update process showing the update details, 
+				including total size of the update, download progress as it downloads and 
+				installation progress once the download has completed</li>
+		</ul>
+
+		<p><b>Note</b>: When you publish your app as an <b>Android App Bundle</b>, the maximum allowed 
+		compressed download size of an app using in-app updates is <b>150MB</b>. In-app updates are 
+		not compatible with apps that use APK expansion files (<b>.obb files</b>).</p>
+
+		<div class="pushdown" id="hierarchy"></div>
+		<h2>Asset Files Hierarchy</h2>
+
+		<p>All files are located under <b>Assets/PleebieJeebies/InAppUpdater/</b></p>
+		<div class="imageContainer">
+			<img src="Updater/FileHierarchy.png" alt="Asset File Hierarchy" width="604" height="209">
 		</div>
-	</div>
+		
+		<h3>Plugins Folder</h3>
+		<p>The <i>Plugins/Android/</i> folder contains the native Android plugin library with a .txt 
+		file that contains all the proguard rules. You should include these rules in your proguard 
+		file if you are using proguard rules in your project.</p>
+		
+		<h3>Prefabs Folder</h3>
+		<p>The <i>Prefabs/</i> folder has two prefabs.  One is the <b>Immediate Updater</b> 
+		prefab.  Drag and drop this prefab into your project to use the asset.  The other prefab is 
+		the <b>UpdateButtonPopup</b> prefab, use this only if you want to use a button inside your app 
+		to check for updates.  If you just want automatic updates on app launch then all you need 
+		is the <b>Immediate Updater</b> prefab.</p>
 
-	<div class="pushdown" id="about"></div>
-	<h2>About</h2>
-	
-	<p>The Pleebie Jeebies Immediate In-App Updater for Google Play asset is for getting your 
-	application to check for an available update of your <b>Android</b> app on the <b>Google Play Store</b>. 
-	The custom plugin and associated script will notify the user of an available update from 
-	within your app and give them the option of installing it.</p>
+		<h3>Scenes Folder</h3>
+		<p>The <i>Scenes/</i> folder contains a simple demo scene that has both automatic updates and a 
+		button for manually checking updates implemented.</p>
+		
+		<h3>Scripts Folder</h3>
+		<p>The <i>Scripts/</i> folder has three scripts.  The <b>ImmediateUpdater</b> script handles the 
+		main functionality of this asset.  The <b>MenuController</b> script is just for the quit button in the 
+		demo scene.  The <b>PopupController</b> script handles the functionality of the manual update 
+		button in the demo scene and the associated popups.</p>
+		
+		
+		<div class="pushdown" id="install"></div>
+		<h2>Installation</h2>
 
-	<p>The main functions of this asset are:</p>
-	<ul>
-		<li>Automatically check for an available update on the Google Play Store 
-		or via a button from within your application</li>
-		<li>Uses a native Android overlay for the update process showing the update details, 
-			including total size of the update, download progress as it downloads and 
-			installation progress once the download has completed</li>
-	</ul>
-
-	<p><b>Note</b>: When you publish your app as an <b>Android App Bundle</b>, the maximum allowed 
-	compressed download size of an app using in-app updates is <b>150MB</b>. In-app updates are 
-	not compatible with apps that use APK expansion files (<b>.obb files</b>).</p>
-
-	<div class="pushdown" id="hierarchy"></div>
-	<h2>Asset Files Hierarchy</h2>
-
-	<p>All files are located under <b>Assets/PleebieJeebies/InAppUpdater/</b></p>
-	<div class="imageContainer">
-		<img src="Updater/FileHierarchy.png" alt="Asset File Hierarchy" width="604" height="209">
-	</div>
-	
-	<h3>Plugins Folder</h3>
-	<p>The <i>Plugins/Android/</i> folder contains the native Android plugin library with a .txt 
-	file that contains all the proguard rules. You should include these rules in your proguard 
-	file if you are using proguard rules in your project.</p>
-	
-	<h3>Prefabs Folder</h3>
-	<p>The <i>Prefabs/</i> folder has two prefabs.  One is the <b>Immediate Updater</b> 
-	prefab.  Drag and drop this prefab into your project to use the asset.  The other prefab is 
-	the <b>UpdateButtonPopup</b> prefab, use this only if you want to use a button inside your app 
-	to check for updates.  If you just want automatic updates on app launch then all you need 
-	is the <b>Immediate Updater</b> prefab.</p>
-
-	<h3>Scenes Folder</h3>
-	<p>The <i>Scenes/</i> folder contains a simple demo scene that has both automatic updates and a 
-	button for manually checking updates implemented.</p>
-	
-	<h3>Scripts Folder</h3>
-	<p>The <i>Scripts/</i> folder has three scripts.  The <b>ImmediateUpdater</b> script handles the 
-	main functionality of this asset.  The <b>MenuController</b> script is just for the quit button in the 
-	demo scene.  The <b>PopupController</b> script handles the functionality of the manual update 
-	button in the demo scene and the associated popups.</p>
-	
-	
-	<div class="pushdown" id="install"></div>
-	<h2>Installation</h2>
-
-	<ul>
-		<li>Download the asset from the Unity Editor <i>Package Manager</i> window 
-		(Window > Package Manager from the Unity Editor toolbar)</li>
-		<li>Import the asset package into your project</li>
-		<li>Download the package <b>App Update (com.google.play.appupdate-1.7.0.unitypackage)</b> from Google: 
-			<a href="https://github.com/google/play-unity-plugins/releases/tag/v1.7.0">Google Github Play Core 1.7</a></li>
+		<ul>
+			<li>Download the asset from the Unity Editor <i>Package Manager</i> window 
+			(Window > Package Manager from the Unity Editor toolbar)</li>
+			<li>Import the asset package into your project</li>
+			<li>Download the package <b>App Update (com.google.play.appupdate-1.7.0.unitypackage)</b> from Google: 
+				<a href="https://github.com/google/play-unity-plugins/releases/tag/v1.7.0">Google Github Play Core 1.7</a></li>
+				<div class="imageContainer">
+					<img src="Updater/PlayInAppUpdate1.7.png" alt="Play In App Updates on Google"
+						length="375" width="575">
+				</div>
+			<li>Import the entirety of the <b>Play In-App Update</b> package in to your project, 
+			which will include the <b>External Dependency Manager</b></li>
+			<li>Depending on the version, you may see a popup requesting to <b>Enable Android Auto-resolution</b>; 
+			enable this to resolve any dependencies</li>
 			<div class="imageContainer">
-				<img src="Updater/PlayInAppUpdate1.7.png" alt="Play In App Updates on Google"
+				<img src="Updater/AutoResolution.png" alt="Auto resolution request by Google Play"
+				width="302" length="182">
+			</div>
+			<li>You should end up with the following <i>GooglePlayPlugins</i> as well as the <i>ExternalDependencyManager Editor</i> 
+			version <b>1.2.169</b>, future or past versions are <b>not yet supported</b></li>
+			<div class="imageContainer">
+				<img src="Updater/ExternalDependencyManager.png" alt="Files that are imported"
+				width="302" length="182">
+			</div>
+			<li>After resolving dependencies, you should also end up with the android plugin <b>com.google.android.play.core-1.10.3.aar</b>. 
+			<u>Without the proper files, the updater will not work</u></li>
+			<div class="imageContainer">
+				<img src="Updater/PlayCore1.10.3.png" alt="Google Play core 1.10.3 plugin required"
+				width="302" length="182">
+			</div>
+			<li>If the resolver didn’t obtain the play core file, you can attempt to force it with: 
+			<i>Assets > External Dependency Manager > Android Resolver > Force Resolve</i></li>
+			<div class="imageContainer">
+				<img src="Updater/ForceResolve.png" alt="How to Force Android Resolve"
 					length="375" width="575">
 			</div>
-		<li>Import the entirety of the <b>Play In-App Update</b> package in to your project, 
-		which will include the <b>External Dependency Manager</b></li>
-		<li>Depending on the version, you may see a popup requesting to <b>Enable Android Auto-resolution</b>; 
-		enable this to resolve any dependencies</li>
-		<div class="imageContainer">
-			<img src="Updater/AutoResolution.png" alt="Auto resolution request by Google Play"
-			width="302" length="182">
-		</div>
-		<li>You should end up with the following <i>GooglePlayPlugins</i> as well as the <i>ExternalDependencyManager Editor</i> 
-		version <b>1.2.169</b>, future or past versions are <b>not yet supported</b></li>
-		<div class="imageContainer">
-			<img src="Updater/ExternalDependencyManager.png" alt="Files that are imported"
-			width="302" length="182">
-		</div>
-		<li>After resolving dependencies, you should also end up with the android plugin <b>com.google.android.play.core-1.10.3.aar</b>. 
-		<u>Without the proper files, the updater will not work</u></li>
-		<div class="imageContainer">
-			<img src="Updater/PlayCore1.10.3.png" alt="Google Play core 1.10.3 plugin required"
-			width="302" length="182">
-		</div>
-		<li>If the resolver didn’t obtain the play core file, you can attempt to force it with: 
-		<i>Assets > External Dependency Manager > Android Resolver > Force Resolve</i></li>
-		<div class="imageContainer">
-			<img src="Updater/ForceResolve.png" alt="How to Force Android Resolve"
-				length="375" width="575">
-		</div>
-		<li>The resolver can cause errors, one I receive in <i>Unity 2020.3.36f1</i> is:</li>	
-		<div class="imageContainer">
-			<img src="Updater/PossibleGradleIssue.png" alt="Possible Gradle Issue in Unity"
-			width="302" length="182">
-		</div>
-		<li>The way I was able to resolve this issue:</li>
-		<div class="imageContainer">
-			<img src="Updater/PossibleGradleResolution.png" alt="Possible Resolution to above issue"
-				length="375" width="575">
-		</div>
-		<li>After unchecking and re-checking, you can attempt to Force Resolve Android Dependencies again, 
-		which should give you the file necessary to update properly</li>
-		<li>Once you have the proper files listed in <a href="#install">this section</a>, namely the android 
-		plugin <b>com.google.android.play.core-1.10.3.aar</b> that is all you need to do. 
-		See <a href="#config">configuration</a> on how to use the asset in your project</li>
-	</ul>
-	
-	
-	<div class="pushdown" id="config"></div>
-	<h2>Configuration</h2>
-	
-	<div id="default"></div>
-	<h3>Default Configuration</h3>
-	<p>Configuration of this asset is very simple. Automatic updates are on by default. 
-	To turn them off, just un-check the box labelled <b>Check For Update On Start</b> 
-	in the inspector.</p>
-	
-	<div class="imageContainer">
-		<img src="Updater/InspectorImage.png" alt="Default Configuration">
-	</div>
-	
-	<p>If you wish to use the popup system that is in the demo scene, just drag in the 
-	<b>UpdatePopupButton</b> prefab into the scene and link your Button and the PopupController 
-	to the fields on the <b>Immediate Updater</b> prefab in the inspector.</p>
-	
-	<div id="buttons"></div>
-	<h3>Custom Buttons</h3>
-	<p>If you wish to create your own button system from scratch to check for an update, then in 
-	the ImmediateUpdater script you will find a method called <b>ManualUpdate()</b>.  This method 
-	can be called by your custom button to initiate a check for an update.</p>
-	
-	<div class="imageContainer">
-		<img src="Updater/ManualUpdate.png" alt="Manual Update">
-	</div>
-	
-	<p>Below the <b>ManualUpdate()</b> Method are also the two methods used by the button system 
-	in the demo scene; edit these if you just wish to change the behavior of the demo scene 
-	button system.</p>
-	
-	<div class="imageContainer">
-		<img src="Updater/ImmediateUpdateCode.png" alt="Immediate Update Code">
-	</div>
-	
-	
-	<div class="pushdown" id="testingWO"></div>
-	<h2>Testing <b>without</b> Play App Signing</h2>
-	
-	<p>If <b>Play App Signing</b> is not enabled for your app which means that you are using your own 
-	keystore to upload and distribute your app or game to users via Google Play Store, then 
-	the easiest way to test the update functionality is to build an apk / app bundle directly from 
-	Unity and install on your test device, but keep in mind that you have these requirements:</p>
-	
-	<ul>
-		<li>In-app updates are available only to user accounts that own the app. So, make sure
-		the account you’re using has downloaded your app from Google Play at least once 
-		before using the account to test in-app updates.</li>
-		<li>Make sure that the app that you are testing in-app updates with has the same 
-		application ID / package name</li>
-		<li>Because Google Play can only update an app to a higher version code, make sure 
-		the app you are testing has a lower version code than the update version code.</li>
-		<li>Make sure the account is eligible and the Google Play cache is up to date. To do so,
-		while logged into the Google Play Store account on the test device, proceed as 
-		follows:</li>
-		<ul>
-			<li>Make sure you completely close the Google Play Store App</li>
-			<li>Open the Google Play Store app and go to the My Apps & Games tab</li>
-			<li>If the app you are testing doesn’t appear with an available update, check that
-			you’ve properly set up your testing tracks</li>
+			<li>The resolver can cause errors, one I receive in <i>Unity 2020.3.36f1</i> is:</li>	
+			<div class="imageContainer">
+				<img src="Updater/PossibleGradleIssue.png" alt="Possible Gradle Issue in Unity"
+				width="302" length="182">
+			</div>
+			<li>The way I was able to resolve this issue:</li>
+			<div class="imageContainer">
+				<img src="Updater/PossibleGradleResolution.png" alt="Possible Resolution to above issue"
+					length="375" width="575">
+			</div>
+			<li>After unchecking and re-checking, you can attempt to Force Resolve Android Dependencies again, 
+			which should give you the file necessary to update properly</li>
+			<li>Once you have the proper files listed in <a href="#install">this section</a>, namely the android 
+			plugin <b>com.google.android.play.core-1.10.3.aar</b> that is all you need to do. 
+			See <a href="#config">configuration</a> on how to use the asset in your project</li>
 		</ul>
-	</ul>
-	
-	
-	<div class="pushdown" id="testingW"></div>
-	<h2>Testing <b>with</b> Play App Signing</h2>
-	
-	<p>If <b>Play App Signing</b> is enabled for your app, you can test the integration in two ways.</p>
-	<p><b>First</b> by uploading apk / app bundle files directly to the Play Store Console in the Alpha 
-	channel and use this channel to download the update and test the app. The downside of 
-	this method is that you will have to update your <b>versionCode</b> every time when you want to
-	test changes in the integration. If it's not a big deal for you I would prefer to go with this 
-	way.</p>
-	<p>Second way is by using the Internal App-Sharing option from the Play Store Console. You 
-	can read more about it here: 
-	<a href="https://support.google.com/googleplay/android-developer/answer/9844679">Google Play Android Support</a></p>
-	<p>With this method, on your test device, make sure you've already installed a version of your app that meets 
-	the following requirements:</p>
-	<ul>
-		<li>The app was installed using an internal app sharing URL</li>
-		<li>Supports in-app updates</li>
-		<li>Uses a version code that's lower than the updated version of your app</li>
-	</ul>
-	
-	<p>Follow the Play Console instructions on how to <b>share your app internally</b>. Make sure you
-	upload a version of your app that uses a version code that's higher than the one you have 
-	already installed on the test device.</p>
-	<p>On the test device, only click the internal app-sharing link for the updated version of your 
-	app. <b>Do not install the app</b> from the Google Play Store page you see after clicking the 
-	link.</p>
-	<p>Open the app from the device's app drawer or home screen. The update should now be 
-	available to your app, and you can test your implementation of in-app updates.</p>
-	<p>You can read more about this topic in Google's documentation:</br>
-	<a href="https://developer.android.com/guide/playcore/in-app-updates/test">Google Guide to Internal App Sharing</a></p>
-	
-	
-	<div class="pushdown" id="faq"></div>
-	<h2>Frequently Asked Questions (FAQ)</h2>
-	
-	<p><b>Q: </b><i>“Running the Updater on the Unity Editor is giving me an error, what’s the issue?”</i></p>
-	<p><b>A: </b>The Pleebie Jeebies In-App Updater is designed to be used only on an android device which is using 
-	Google Play Store for the app. It is expected to throw errors in the Unity editor. Following the installation and testing 
-	process carefully should result in an app which will update upon one being available to the user. 
-	See <a href="#top">About</a> for more information or one of the above testing sections on how to test the Updater in your app.</p>
-	
-	<p><b>Q: </b><i>“I’ve followed the test process, but my app is not updating, what’s the issue?”</i></p>
-	<p><b>A: </b>There are a number of possibilities:</p>
-	<ol>
-		<li>It could be that you didn’t update your app version before trying to test. The update won’t be triggered unless the version 
-		attempting to be updated is above the version installed. Or if you already updated your app via the Google Play Store, 
-		there won’t be an available update for the Updater to trigger.</li>
-		<li>If it is not your testing process, it is likely that you haven’t properly imported all files which are necessary for the Updater. 
-		See <a href="#install">Installation</a> for everything necessary and other possible issues.</li>
-	</ol>
-	
-	<p>If you are experiencing any issues, contact our support team at:</br>
-	<a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a></p>
-	
-	<div id="center">
-		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
-		</br>
-		</br>
-		<a href="#top">Back to Top of Page</a>
+		
+		
+		<div class="pushdown" id="config"></div>
+		<h2>Configuration</h2>
+		
+		<div id="default"></div>
+		<h3>Default Configuration</h3>
+		<p>Configuration of this asset is very simple. Automatic updates are on by default. 
+		To turn them off, just un-check the box labelled <b>Check For Update On Start</b> 
+		in the inspector.</p>
+		
+		<div class="imageContainer">
+			<img src="Updater/InspectorImage.png" alt="Default Configuration">
+		</div>
+		
+		<p>If you wish to use the popup system that is in the demo scene, just drag in the 
+		<b>UpdatePopupButton</b> prefab into the scene and link your Button and the PopupController 
+		to the fields on the <b>Immediate Updater</b> prefab in the inspector.</p>
+		
+		<div id="buttons"></div>
+		<h3>Custom Buttons</h3>
+		<p>If you wish to create your own button system from scratch to check for an update, then in 
+		the ImmediateUpdater script you will find a method called <b>ManualUpdate()</b>.  This method 
+		can be called by your custom button to initiate a check for an update.</p>
+		
+		<div class="imageContainer">
+			<img src="Updater/ManualUpdate.png" alt="Manual Update">
+		</div>
+		
+		<p>Below the <b>ManualUpdate()</b> Method are also the two methods used by the button system 
+		in the demo scene; edit these if you just wish to change the behavior of the demo scene 
+		button system.</p>
+		
+		<div class="imageContainer">
+			<img src="Updater/ImmediateUpdateCode.png" alt="Immediate Update Code">
+		</div>
+		
+		
+		<div class="pushdown" id="testingWO"></div>
+		<h2>Testing <b>without</b> Play App Signing</h2>
+		
+		<p>If <b>Play App Signing</b> is not enabled for your app which means that you are using your own 
+		keystore to upload and distribute your app or game to users via Google Play Store, then 
+		the easiest way to test the update functionality is to build an apk / app bundle directly from 
+		Unity and install on your test device, but keep in mind that you have these requirements:</p>
+		
+		<ul>
+			<li>In-app updates are available only to user accounts that own the app. So, make sure
+			the account you’re using has downloaded your app from Google Play at least once 
+			before using the account to test in-app updates.</li>
+			<li>Make sure that the app that you are testing in-app updates with has the same 
+			application ID / package name</li>
+			<li>Because Google Play can only update an app to a higher version code, make sure 
+			the app you are testing has a lower version code than the update version code.</li>
+			<li>Make sure the account is eligible and the Google Play cache is up to date. To do so,
+			while logged into the Google Play Store account on the test device, proceed as 
+			follows:</li>
+			<ul>
+				<li>Make sure you completely close the Google Play Store App</li>
+				<li>Open the Google Play Store app and go to the My Apps & Games tab</li>
+				<li>If the app you are testing doesn’t appear with an available update, check that
+				you’ve properly set up your testing tracks</li>
+			</ul>
+		</ul>
+		
+		
+		<div class="pushdown" id="testingW"></div>
+		<h2>Testing <b>with</b> Play App Signing</h2>
+		
+		<p>If <b>Play App Signing</b> is enabled for your app, you can test the integration in two ways.</p>
+		<p><b>First</b> by uploading apk / app bundle files directly to the Play Store Console in the Alpha 
+		channel and use this channel to download the update and test the app. The downside of 
+		this method is that you will have to update your <b>versionCode</b> every time when you want to
+		test changes in the integration. If it's not a big deal for you I would prefer to go with this 
+		way.</p>
+		<p>Second way is by using the Internal App-Sharing option from the Play Store Console. You 
+		can read more about it here: 
+		<a href="https://support.google.com/googleplay/android-developer/answer/9844679">Google Play Android Support</a></p>
+		<p>With this method, on your test device, make sure you've already installed a version of your app that meets 
+		the following requirements:</p>
+		<ul>
+			<li>The app was installed using an internal app sharing URL</li>
+			<li>Supports in-app updates</li>
+			<li>Uses a version code that's lower than the updated version of your app</li>
+		</ul>
+		
+		<p>Follow the Play Console instructions on how to <b>share your app internally</b>. Make sure you
+		upload a version of your app that uses a version code that's higher than the one you have 
+		already installed on the test device.</p>
+		<p>On the test device, only click the internal app-sharing link for the updated version of your 
+		app. <b>Do not install the app</b> from the Google Play Store page you see after clicking the 
+		link.</p>
+		<p>Open the app from the device's app drawer or home screen. The update should now be 
+		available to your app, and you can test your implementation of in-app updates.</p>
+		<p>You can read more about this topic in Google's documentation:</br>
+		<a href="https://developer.android.com/guide/playcore/in-app-updates/test">Google Guide to Internal App Sharing</a></p>
+		
+		
+		<div class="pushdown" id="faq"></div>
+		<h2>Frequently Asked Questions (FAQ)</h2>
+		
+		<p><b>Q: </b><i>“Running the Updater on the Unity Editor is giving me an error, what’s the issue?”</i></p>
+		<p><b>A: </b>The Pleebie Jeebies In-App Updater is designed to be used only on an android device which is using 
+		Google Play Store for the app. It is expected to throw errors in the Unity editor. Following the installation and testing 
+		process carefully should result in an app which will update upon one being available to the user. 
+		See <a href="#top">About</a> for more information or one of the above testing sections on how to test the Updater in your app.</p>
+		
+		<p><b>Q: </b><i>“I’ve followed the test process, but my app is not updating, what’s the issue?”</i></p>
+		<p><b>A: </b>There are a number of possibilities:</p>
+		<ol>
+			<li>It could be that you didn’t update your app version before trying to test. The update won’t be triggered unless the version 
+			attempting to be updated is above the version installed. Or if you already updated your app via the Google Play Store, 
+			there won’t be an available update for the Updater to trigger.</li>
+			<li>If it is not your testing process, it is likely that you haven’t properly imported all files which are necessary for the Updater. 
+			See <a href="#install">Installation</a> for everything necessary and other possible issues.</li>
+		</ol>
+		
+		<p>If you are experiencing any issues, contact our support team at:</br>
+		<a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a></p>
 	</div>
 	
+	<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+	</br>
+	</br>
+	<a href="#top">Back to Top of Page</a>
 </body>
 </html>

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Asset Cleaner Documentation by Pleebie Jeebies</title>
 <link rel="icon" type="image/x-icon" href="CompanyLogo.png">
 <style>
 body {
-  margin: 0 250px 0 250px;
   background-color: #f1f1f1;
   font-family: Content-font, Roboto, sans-serif;
   font-size: 20px;
-  padding-bottom: 250px;
+  padding: 115px 0 100px 0;
+  text-align: center;
 }
 
-#center {
-  text-align: center;
+#content {
+  max-width: 80%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pushdown {
@@ -37,7 +40,7 @@ body {
   text-align: center;
   padding: 15px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 #navbar a:hover {
@@ -45,10 +48,14 @@ body {
   color: black;
 }
 
+.imageContainer > img {
+  max-width: 100%;
+}
+
 .imageContainer > img:active {
   width: 200%;
   height: 200%;
-  max-width: 65%;
+  max-width: 100%;
 }
 
 li {
@@ -66,149 +73,145 @@ li {
 	<a href="#output">Advanced Console Output</a>
 </nav>
 <body>
-	<div class="pushdown"></div>
-	<div id="center">
-		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
-		<div> <!--style="float: right; padding-right: 175px;"-->
-			<h1><a href="https://u3d.as/2FE2">Pleebie Jeebies</a></h1>
-			<h1><a href="https://u3d.as/2FE2">Asset Cleaner</a></h1>
-		</div>
+	<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+	<div> <!--style="float: right; padding-right: 175px;"-->
+		<h1><a href="https://u3d.as/2FE2">Pleebie Jeebies</a></h1>
+		<h1><a href="https://u3d.as/2FE2">Asset Cleaner</a></h1>
 	</div>
+		
+	<div id="content">
+		<div class="pushdown" id="about"></div>
+		<h2>About</h2>
+		
+		<p>The Pleebie Jeebies Asset Cleaner is a simple way to clean up unused assets in a project.</p>
 
-	<div class="pushdown" id="about"></div>
-	<h2>About</h2>
-	
-	<p>The Pleebie Jeebies Asset Cleaner is a simple way to clean up unused assets in a project.</p>
-
-	<p>The main functions of this asset are:</p>
-	<ul>
-		<li>Indexes all assets in the project and displays a list of found scenes</li>
+		<p>The main functions of this asset are:</p>
 		<ul>
-			<li>The list of displayed scenes can be edited to select which scenes will be scanned for unused assets</li>
-			<li>A corresponding tree of unused assets found in the selected scenes will then be displayed</li>
+			<li>Indexes all assets in the project and displays a list of found scenes</li>
+			<ul>
+				<li>The list of displayed scenes can be edited to select which scenes will be scanned for unused assets</li>
+				<li>A corresponding tree of unused assets found in the selected scenes will then be displayed</li>
+			</ul>
+			<li>The unused assets tree can be edited to select which files are deleted before a delete operation is executed</li>
+			<li>The settings menu allows you to set up specific rules before the scanning process is executed, such as:</li>
+			<ul>
+				<li>Exclude Scripts, Materials, ScriptableObjects, or any File Extensions added to the exclusion list</li>
+				<li>Exclude specific folders from the scan</li>
+				<li>Output specifics from cleaning process to the console to assist with debugging</li>
+				<li>And more, see <a href="#setting">Asset Cleaner Settings</a> for full details</li>
+			</ul>
 		</ul>
-		<li>The unused assets tree can be edited to select which files are deleted before a delete operation is executed</li>
-		<li>The settings menu allows you to set up specific rules before the scanning process is executed, such as:</li>
-		<ul>
-			<li>Exclude Scripts, Materials, ScriptableObjects, or any File Extensions added to the exclusion list</li>
-			<li>Exclude specific folders from the scan</li>
-			<li>Output specifics from cleaning process to the console to assist with debugging</li>
-			<li>And more, see <a href="#setting">Asset Cleaner Settings</a> for full details</li>
-		</ul>
-	</ul>
-	
-	<p><b>NOTE:</b> Always backup your project before using a tool that deletes files.</p>
+		
+		<p><b>NOTE:</b> Always backup your project before using a tool that deletes files.</p>
 
-	
-	<div class="pushdown" id="files"></div>
-	<h2>Asset Files Hierarchy</h2>
-	<p>All files are located under <b>Assets/PleebieJeebies/AssetCleaner/</b></p>
-	<div class="imageContainer">
-		<img src="Cleaner/FileHierarchy.png" alt="File hierarchy">
-	</div>
-	
-	<h3>Editor Folder</h3>
-	<p>The <i>Editor</i> folder contains all the scripts required for the cleaner to work properly. 
-	You don’t need to do anything with these other than know they exist. Removing or changing these files may give undesired results.</p>
-	
-	<h3>Asset Cleaner Documentation</h3>
-	<p>A PDF file documenting everything about the Pleebie Jeebies Asset Cleaner.</p>
-	
-	<h3>Default Scene</h3>
-	<p>A scene created which doesn’t do anything. Simply a placeholder.</p>
-	
-	
-	<div class="pushdown" id="install"></div>
-	<h2>Installation</h2>
-
-	<ul>
-		<li>Download the asset inside the Unity Editor Package Manager window (Window > Package Manager from the Unity Editor toolbar)</li>
-		<li>Import the asset package into the project</li>
-		<li>Review <a href="#cleaning">Cleaning Assets from Your Project</a> on how to use the Asset Cleaner to remove unused assets from a project</li>
-	</ul>	
-	
-	
-	<div class="pushdown" id="cleaning"></div>
-	<h2>Cleaning Assets from Your Project</h2>
-	
-	<h3>Step 1</h3>
-	
-	<p>There are multiple avenues to starting the Asset Cleaner:</p>
-	<ul>
-		<li>The <i>Tools</i> editor menu will have an <i>Asset Cleaner</i> option, which allows you to scan either the entire project or selected folders</li>
+		
+		<div class="pushdown" id="files"></div>
+		<h2>Asset Files Hierarchy</h2>
+		<p>All files are located under <b>Assets/PleebieJeebies/AssetCleaner/</b></p>
 		<div class="imageContainer">
-			<img src="Cleaner/Step1.png" alt="Project Scan">
+			<img src="Cleaner/FileHierarchy.png" alt="File hierarchy">
 		</div>
-		</br>
-		<li>The <i>Assets</i> editor menu, which also has a <i>Scan Selected Folder(s)</i> option</li>
+		
+		<h3>Editor Folder</h3>
+		<p>The <i>Editor</i> folder contains all the scripts required for the cleaner to work properly. 
+		You don’t need to do anything with these other than know they exist. Removing or changing these files may give undesired results.</p>
+		
+		<h3>Asset Cleaner Documentation</h3>
+		<p>A PDF file documenting everything about the Pleebie Jeebies Asset Cleaner.</p>
+		
+		<h3>Default Scene</h3>
+		<p>A scene created which doesn’t do anything. Simply a placeholder.</p>
+		
+		
+		<div class="pushdown" id="install"></div>
+		<h2>Installation</h2>
+
 		<ul>
-			<li>You can achieve the same option by right-clicking in the <i>Project</i> hierarchy</li>
+			<li>Download the asset inside the Unity Editor Package Manager window (Window > Package Manager from the Unity Editor toolbar)</li>
+			<li>Import the asset package into the project</li>
+			<li>Review <a href="#cleaning">Cleaning Assets from Your Project</a> on how to use the Asset Cleaner to remove unused assets from a project</li>
+		</ul>	
+		
+		
+		<div class="pushdown" id="cleaning"></div>
+		<h2>Cleaning Assets from Your Project</h2>
+		
+		<h3>Step 1</h3>
+		
+		<p>There are multiple avenues to starting the Asset Cleaner:</p>
+		<ul>
+			<li>The <i>Tools</i> editor menu will have an <i>Asset Cleaner</i> option, which allows you to scan either the entire project or selected folders</li>
 			<div class="imageContainer">
-				<img src="Cleaner/step1bc.png" alt="Folder Scan" width="519" height="483">
+				<img src="Cleaner/Step1.png" alt="Project Scan">
 			</div>
+			</br>
+			<li>The <i>Assets</i> editor menu, which also has a <i>Scan Selected Folder(s)</i> option</li>
+			<ul>
+				<li>You can achieve the same option by right-clicking in the <i>Project</i> hierarchy</li>
+				<div class="imageContainer">
+					<img src="Cleaner/step1bc.png" alt="Folder Scan" width="519" height="483">
+				</div>
+			</ul>
 		</ul>
-	</ul>
-	
-	<h3>Step 2</h3>
-	
-	<p>After the Asset Cleaner has indexed all the assets, a window with a list of all the scenes in the project will be displayed. Here is where demo scenes that are not part of the project can be deselected.</p>
-	<div class="imageContainer">
-		<img src="Cleaner/Step2.png" alt="Scene List" width="414" height="208">
+		
+		<h3>Step 2</h3>
+		
+		<p>After the Asset Cleaner has indexed all the assets, a window with a list of all the scenes in the project will be displayed. Here is where demo scenes that are not part of the project can be deselected.</p>
+		<div class="imageContainer">
+			<img src="Cleaner/Step2.png" alt="Scene List" width="414" height="208">
+		</div>
+		
+		<h3>Step 3</h3>
+		
+		<p>The unused assets in the project are displayed in a tree format. Any assets that are deselected will be retained when a delete is executed. Clicking <i>DELETE SELECTED</i> will delete all of the selected assets and clean up any empty folders that result from deleting the assets.</p>
+		<div class="imageContainer">
+			<img src="Cleaner/Step3.png" alt="Unused Assets" width="291" height="540">
+		</div>
+		
+		<div class="pushdown" id="setting"></div>
+		<h2>Asset Cleaner Settings</h2>
+		
+		<div class="imageContainer">
+			<img src="Cleaner/Settings.png" alt="Cleaner Settings" width="329" height="463">
+		</div>
+		
+		<div id="option"></div>
+		<h3>Options</h3>
+		
+		<p><b>No Warning on Launch</b> – Enable this to have no warning to back up the project each time the Asset Cleaner is launched</p>
+		<p><b>Delete Empty Folders</b> – Enable this to have empty folders removed after an asset clean</p>
+		<p><b>Exclude Scripts</b> – Enable this to exclude scripts when cleaning assets</p>
+		<p><b>Exclude Materials</b> – Enable this to exclude materials when cleaning assets</p>
+		<p><b>Exclude ScriptableObjects</b> – Enable this to exclude ScriptableObjects when cleaning assets</p>
+		<p><b>Exclude Documents</b> – Enable this to exclude the document file types that are defined in the <i>Document File Extensions</i> list when cleaning assets</p>
+		<p><b>Exclude Other Files</b> – Enable this to exclude the other file types that are defined in the <i>Other File Extensions</i> list when cleaning assets</p>
+		
+		
+		<div class="pushdown" id="output"></div>
+		<h3>Advanced Console Output</h3>
+		
+		<p>Each stage of the Asset Cleaner has the option to enable advanced console output for debugging purposes. Advanced Console Output also requires that the <i>Console Output</i> option is enabled in the Editor Menu.</p>
+		
+		<div class="imageContainer">
+			<img src="Cleaner/ConsoleOutput.png" alt="Console Output">
+		</div>
+		
+		<h3>Excluded Folders</h3>
+		<p>Use the <i>Excluded Folders</i> panel in settings to exclude folders from the Asset Cleaner.</p>
+		
+		<div class="imageContainer">
+			<img src="Cleaner/ExcludedFolders.png" alt="Excluding Folders">
+		</div>
+		
+		</br>
+		
+		<p>If you are experiencing any issues, contact our support team at:</br>
+		<a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a></p>
 	</div>
 	
-	<h3>Step 3</h3>
-	
-	<p>The unused assets in the project are displayed in a tree format. Any assets that are deselected will be retained when a delete is executed. Clicking <i>DELETE SELECTED</i> will delete all of the selected assets and clean up any empty folders that result from deleting the assets.</p>
-	<div class="imageContainer">
-		<img src="Cleaner/Step3.png" alt="Unused Assets" width="291" height="540">
-	</div>
-	
-	<div class="pushdown" id="setting"></div>
-	<h2>Asset Cleaner Settings</h2>
-	
-	<div class="imageContainer">
-		<img src="Cleaner/Settings.png" alt="Cleaner Settings" width="329" height="463">
-	</div>
-	
-	<div id="option"></div>
-	<h3>Options</h3>
-	
-	<p><b>No Warning on Launch</b> – Enable this to have no warning to back up the project each time the Asset Cleaner is launched</p>
-	<p><b>Delete Empty Folders</b> – Enable this to have empty folders removed after an asset clean</p>
-	<p><b>Exclude Scripts</b> – Enable this to exclude scripts when cleaning assets</p>
-	<p><b>Exclude Materials</b> – Enable this to exclude materials when cleaning assets</p>
-	<p><b>Exclude ScriptableObjects</b> – Enable this to exclude ScriptableObjects when cleaning assets</p>
-	<p><b>Exclude Documents</b> – Enable this to exclude the document file types that are defined in the <i>Document File Extensions</i> list when cleaning assets</p>
-	<p><b>Exclude Other Files</b> – Enable this to exclude the other file types that are defined in the <i>Other File Extensions</i> list when cleaning assets</p>
-	
-	
-	<div class="pushdown" id="output"></div>
-	<h3>Advanced Console Output</h3>
-	
-	<p>Each stage of the Asset Cleaner has the option to enable advanced console output for debugging purposes. Advanced Console Output also requires that the <i>Console Output</i> option is enabled in the Editor Menu.</p>
-	
-	<div class="imageContainer">
-		<img src="Cleaner/ConsoleOutput.png" alt="Console Output">
-	</div>
-	
-	<h3>Excluded Folders</h3>
-	<p>Use the <i>Excluded Folders</i> panel in settings to exclude folders from the Asset Cleaner.</p>
-	
-	<div class="imageContainer">
-		<img src="Cleaner/ExcludedFolders.png" alt="Excluding Folders">
-	</div>
-	
+	<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
 	</br>
-	
-	<p>If you are experiencing any issues, contact our support team at:</br>
-	<a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a></p>
-	
-	<div id="center">
-		<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
-		</br>
-		</br>
-		<a href="#top">Back to Top of Page</a>
-	</div>
-	
+	</br>
+	<a href="#top">Back to Top of Page</a>
 </body>
 </html>
