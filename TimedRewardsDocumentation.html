@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Timed Rewards Documentation by Pleebie Jeebies</title>
+<link rel="icon" type="image/x-icon" href="CompanyLogo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  background-color: #f1f1f1;
+  font-family: Content-font, Roboto, sans-serif;
+  font-size: 20px;
+  padding: 115px 0 100px 0;
+  text-align: center;
+}
+
+#content {
+  max-width: 80%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pushdown {
+  padding-top: 50px;
+}
+
+.lilpushdown {
+  padding-top: 30px;
+}
+
+#navbar {
+  right: 0px;
+  top: 0px;
+  background-color: #333;
+  position: fixed;
+  width: 100%;
+  display: block;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.imageContainer > img {
+  max-width: 100%;
+}
+
+.imageContainer > img:active {
+  width: 200%;
+  height: 200%;
+  max-width: 100%;
+}
+
+li {
+  padding-bottom: 8px;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: #333;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: #ddd;
+  color: black;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #333;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: black;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+</style>
+</head>
+<nav id="navbar">
+	<a href="#about">About</a>
+	<a href="#files">Asset Files Hierarchy</a>
+	<a href="#install">Installation</a>
+	<a href="#config">Configuration</a>
+	<div class="subnav">
+		<button class="subnavbtn">Getting Started and Asset Setup <i class="fa fa-caret-down"></i></button>
+		<div class="subnav-content">
+			<a href="#howto1">Getting Started</a>
+			<a href="#howto2">First Steps</a>
+			<a href="#howto3">Using the <i>PJ_UserInterface</i> Prefab</a>
+			<a href="#howto4">Using ONLY the <i>PJ_TimedRewards</i> Prefab</a>
+			<a href="#howto5">Setting Up a Timed Reward</a>
+			<a href="#howto6">How to Use or Code for a Custom Timed Reward</a>
+			<a href="#howto7">Specifications and Personalization</a>
+			<a href="#howto8">How to Rollover Users to a New Set of Timed Rewards</a>
+		</div>
+	</div>
+	<a href="#missed">'Missed Interval' and Making Changes</a>
+	<a href="#final">PlayerPrefs Information and Final Thoughts</a>
+</nav>
+<body>
+	<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+	<div> <!--style="float: right; padding-right: 175px;"-->
+		<h1><a href="https://u3d.as/37AC">Pleebie Jeebies</a></h1>
+		<h1><a href="https://u3d.as/37AC">Timed Rewards</a></h1>
+	</div>
+
+	<div id="content">
+		<div class="pushdown" id="about"></div>
+		<h2>About</h2>
+		
+		<p>The Pleebie Jeebies Timed Rewards asset offers developers a simple-to-use and feature-rich approach to a user reward system. 
+		Simply drag and drop in to a scene, set up the desired rewards for users, and the asset takes care of the rest.</p>
+
+		<p>The main functions of this asset are:</p>
+		<ul>
+			<li>Build a list of rewards for users to collect on a custom set time interval</li>
+			<li>Feature-rich script allows personalization of the reward system as desired (see <a href="#config">Configuration</a> for specific details)</li>
+			<li>Open source code to allow custom method calls or any personalization</li>
+			<li>UI provided to allow customization for any color scheme</li>
+			<li>Generic prefabs given to aid in the setup process</li>
+		</ul>
+		
+		<p>All code is well-documented and variables have been given detailed tooltip information to aid in any configuration process.</p>
+		
+		<p><b>NOTE:</b> This asset uses <a href="https://docs.unity3d.com/ScriptReference/PlayerPrefs.html">PlayerPrefs</a> to record and store the data required to remember what users have or haven’t done. 
+		Because of this, it should be noted that clearing PlayerPrefs will effectively reset the data which will cause the Timed Reward system to restart. 
+		This is by design and is used for <a href="#howto8">app updates or reward rollovers.</a></p>
+
+		
+		<div class="pushdown" id="files"></div>
+		<h2>Asset Files Hierarchy</h2>
+		<p>All files are located under <b>Assets/PleebieJeebies/TimedRewards/</b>. This asset also uses the <a href="https://docs.unity3d.com/Manual/com.unity.textmeshpro.html">TextMeshPro</a> asset with some of the files being altered under <b>Assets/TextMeshPro/Examples & Extras/Resources/Fonts & Materials/</b>.</p>
+		<div class="imageContainer">
+			<img src="TimedRewards/FileHierarchy.PNG" alt="File hierarchy">
+		</div>
+		
+		<h3>Prefabs Folder</h3>
+		<p>Inside the <b>Prefabs/</b> folder, you will find the three prefabs used in the Main Demo Scene, 
+		the <i>PJ_CurrencyController</i>, <i>PJ_TimedRewards</i>, and <i>PJ_UserInterface</i>, as well as some variants of the Timed Rewards prefab. 
+		Any Timed Rewards prefab can be placed in a scene and function after having set up the desired rewards for users. <a href="#howto5">Read here for more information 
+		on how to set up rewards</a>. The Currency Controller prefab is an optional addition to a scene which must be placed on a <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UICanvas.html">Canvas</a> and will display currency gained 
+		set up in the Timed Rewards list. The User Interface prefab contains a fully prepared and functional canvas for the Currency Controller and the Timed Rewards prefabs.</p>
+		
+		<h3>Scenes Folder</h3>
+		<p>Inside the <b>Scenes/</b> folder, you will find three functional sample scenes showcasing the Timed Rewards asset. These scenes have been prepared with prefabs to sample from and to quickly grasp an understanding of this asset. 
+		</br><i>Main Demo Scene</i> displays the Timed Rewards prefab with no limits for the collection process at a 24 hour interval. 
+		</br><i>20 Minute Rewards – Demo Scene</i> displays the timed rewards prefab with some limits, which
+		include a reward stop date where collection is no longer allowed past the set date, rewards from missed intervals cannot be collected, rewards are collected at 20 minute intervals, but the rewards are reset upon completion. 
+		</br><i>10 Second Rewards – Demo Scene</i> displays the Timed Rewards prefab with the same limits in the 20 Minute Rewards sample, except the rewards can be collected at 10 second intervals.</p>
+		
+		<h3>Scripts Folder</h3>
+		<p>Inside the <b>Scripts/</b> folder, you will find the scripts which contain the functionality of this asset. Each script is commented documenting the purpose of each method and all code is open source and can be changed <u>at your own risk</u>. 
+		<i>PJ_CurrencyController</i> contains the functionality for the Currency Controller prefab and any additional desired currencies will need to be added here. 
+		<i>PJ_CustomRewardCall</i> is the script to place your own method calls for custom rewards beyond a standard currency. <i>PJ_TimedRewards</i> contains the main functionality for this asset including most text changes. If a certain text is undesired, this is where it would be changed, if not in the inspector. 
+		<i>PJ_UserInterface</i> contains the functionality for the buttons on the User Interface prefab. Within the Types/ folder are the scripts <i>RewardType</i>, where new currencies can be added, and <i>TimedReward</i>, which is used to represent a Timed Reward object. Finally, within the Helpers/ folder are 
+		custom scripts used to animate multiple graphics on a single button component, <i>PJ_MultiImageButton</i> and <i>PJ_MultiImageTargetGraphics</i>.</p>
+		
+		<h3>Sprites Folder</h3>
+		<p>Inside the <b>Sprites/</b> folder, you will find images used for the interface of the asset, all of which are conveniently white to allow any desired color changes in the inspector. The Icons/ folder contains royalty free icons used to make the interface more understandable for the end user.</p>
+		
+		<h3>TextMesh Pro Folder</h3>
+		<p>The <b>TextMesh Pro/</b> folder contains all the files required for another asset called <a href="https://docs.unity3d.com/Manual/com.unity.textmeshpro.html">TextMeshPro</a> which is an advanced text solution for Unity and is used for several text objects in the Timed Rewards Asset. If TextMeshPro is not imported alongside the rest of the Timed Rewards asset, then several text objects will not appear properly.</p>
+		
+		
+		<div class="pushdown" id="install"></div>
+		<h2>Installation</h2>
+
+		<ul>
+			<li>Download the asset inside the Unity Editor <i>Package Manager</i> window (Window > Package Manager from the Unity Editor toolbar)</li>
+			<li>Import the entirety of the asset package into the project, including the TextMeshPro files. <u>Without these files, the asset will not work properly</u>. See the <a href="#files">Asset Files Hierarchy</a> TextMesh Pro section for more information.</li>
+			<div class="imageContainer">
+				<img src="TimedRewards/FileImport.PNG" alt="Import Entirety of Asset Package">
+			</div>
+			<li>If the TextMesh Pro asset is not already installed and imported, upon running a scene with the Timed Rewards prefab, Unity will prompt to import TMP Essentials; <u>this must be imported for text objects to appear properly</u>. Importing the Extras is not required.</li>
+			<div class="imageContainer">
+				<img src="TimedRewards/TextMeshProImport.PNG" alt="Import Entirety of Asset Package">
+			</div>
+			<li>See <a href="#config">Configuration</a> for more details about this asset, <a href="#howto1">Getting Started and Asset Setup</a> for how to use the asset in your project, 
+			or simply place a prefab in to your scene to see how it works</li>
+		</ul>	
+		
+		
+		<div class="pushdown" id="config"></div>
+		<h2>Configuration</h2>
+		
+		<p>Any Timed Rewards prefab will function by being dragged in to any scene after having set up the desired rewards for users. This section will cover the variables used on the <i>PJ_Timed Rewards</i> script and prefab to better understand how to configure the script or prefab. 
+		The optional prefabs, <i>PJ_CurrencyController</i> and <i>PJ_UserInterface</i>, will also be covered.</p>
+		<div class="imageContainer">
+			<img src="TimedRewards/Configuration.PNG" alt="Main Script in inspector">
+		</div>
+		<p><b>Timed Rewards - </b><u>This is the only variable that requires setup for functionality</u>. Any number of desired rewards are set here for users and will be displayed in the Timed Rewards popup</p>
+		<p><b>Timed Rewards > Reward Type - </b>Represents the type of reward given and based on the types quantified in the <i>RewardType</i> script. This correlates to the currencies in the Demo scenes provided. Selecting ‘Custom’ will allow calling of any method desired upon reward collection (see script <i>PleebieJeebies/PJ_CustomRewardCall.cs</i> for entering methods)</p>
+		<p><b>Timed Rewards > Title If Desired - </b>Shown above the reward item as its title; if left empty, an integer index starting from 1 will be shown as the title instead</p>
+		<p><b>Timed Rewards > Sprite Icon - </b>Sprite shown to represent the collectable reward</p>
+		<p><b>Timed Rewards > Subtitle Or Amount - </b>Shown below the reward Sprite Icon and used to calculate the amount of reward gained; if non-number, a currency amount can't be gained</p>
+		<p><b>Timed Reward Interval Duration Hours - </b>Amount of time (in hours) before allowing claim to the next reward; can be decimal or fraction; read <a href="#missed">‘Missed Interval’ and Making Changes</a> for formulas to get accurate, down to the second intervals</p>
+		<p><b>Task After A Reward Unlocks - </b>Decide what should happen when Timed Rewards are unlocked or missed; The ‘Continue’ option will simply allow the user to claim the reward for the completed interval and the next reward will continue to be unlocked while in the app or not, 
+		this is the default option; The ‘Wait For Claim’ option will stop the timer after a reward is unlocked whether the user is in the app or not. This means the user must claim the unlocked reward before the timer for the next reward will begin. The ‘Miss Reward If Missed Interval’ 
+		option will count how many intervals were missed by the user upon returning to the app and set that number of rewards as missed and unable to be claimed. The ‘Reset Rewards If Missed Interval’ will check if the user has missed a Timed Reward Interval and reset all rewards if that is the case. 
+		See <a href="#missed">‘Missed Interval’ and Making Changes</a> for more information on ‘Missed Intervals’</p>
+		<p><b>Popup At Program Start - </b>Decide if the Timed Rewards UI should pop open at program start based on available rewards or not</p>
+		<p><b>Start Date UTC - </b>Enter in UTC a string formatted to <a href="https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-7.0">DateTime</a>; format is MM/DD/YYYY HH:MM:SS AM/PM; reward period will start after this time has arrived, otherwise leave this field empty</p>
+		<p><b>Stop Date UTC - </b>Enter in UTC a string formatted to <a href="https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-7.0">DateTime</a>; format is MM/DD/YYYY HH:MM:SS AM/PM; after this time has passed, unlocked rewards can still be claimed, but future ones will NOT be unlockable, otherwise leave this field empty</p>
+		<p><b>Reset Rewards On Updated App Version - </b>While true, after entering a new <a href="https://docs.unity3d.com/ScriptReference/Application-version.html">Application Version</a> and starting the app, the rewards will be reset; Edit > Project Settings > Player > Version (NOT Bundle Version Code); <a href="#howto8">For resetting after an update</a></p>
+		<p><b>Reset Rewards After All Done - </b>Setting this true will allow unlocking and claiming of all rewards again after all are claimed (or missed)</p>
+		<p><b>Is First Reward Free - </b>Decide if the first reward is given at app start or has to be unlocked</p>
+		<p><b>Open To First Claimable Reward - </b>If true, the Timed Rewards UI will open to the first claimable reward in the <i>TimedRewards</i> array, even if other rewards are available. Otherwise, it will open to the most recently claimable reward; this also affects when rewards are claimed</p>
+		<p><b>Claim Button Claims All Rewards - </b>When true, pressing the claim reward button will claim every available reward; also changes the Claim button text to ‘Claim All’</p>
+		<p><b>Notify User Of Reward After Claim - </b>Setting this true will activate a separate popup upon reward claim to notify the user of the reward</p>
+		<p><b>Close Reward Popup After Claim - </b>Setting this true will close the Timed Rewards UI after the claim button is pressed</p>
+		<p><b>Show Text Popups - </b>Setting this false will override all other text notifications and never show text popups from this asset</p>
+		<p><b>Show Reward Availability Panel - </b>When true, will display a panel in the top right of the scene to show if a reward is ready or not and will open the Timed Rewards UI when pressed; the color used for availability can be changed in the Personalization section below</p>
+		<p><b>Use Icons To Represent Reward State - </b>When true, icons will be overlaid each reward to represent different states: Locked, Unlocked, Claimed, and Missed; These icons can be changed in the Personalization section below</p>
+		<p><b>Reward Availability Color - </b>Color set to the Reward Availability panel when a reward is available</p>
+		<p><b>Reward Availability Border Color - </b>Color set to the Reward Availability panel border when a reward is available</p>
+		<p><b>Reward State Locked/Unlocked/Claimed/Missed - </b>Sprite used to represent a reward state when 'Use Icons To Represent Reward State' is true (if true, this must be set otherwise a white sprite will cover the reward)</p>
+		<p><b>Prefab/Object Setup Section Variables - </b><u>The variables in this section shouldn’t be changed</u> from the initial prefab as each one is set up to connect to part of the UI; Changing these variables to anything else will cause the asset to not work properly. These variables are serialized to allow easy and efficient setups. In a case where you’d like to build your own, it is advised to copy from an existing prefab.</p>
+		<div class="imageContainer">
+			<img src="TimedRewards/CurrencyController.PNG" alt="Currency Controller in inspector">
+		</div>
+		<p><b>Currency Text - </b>The text objects here correlate to the currencies in <i>RewardType.cs</i> and are used to represent and display the amount of currency owned by the user</p>
+		<div class="imageContainer">
+			<img src="TimedRewards/UserInterface.PNG" alt="Currency Controller in inspector">
+		</div>
+		<p><b>Timed Rewards Popup Panel - </b>Used to open the Timed Rewards UI panel when the 'Reward Popup' button is pressed; must be set to the Reward Panel to work properly</p>
+		<p><b>Exit Button - </b>Used to turn the exit button off while in the Unity Editor since it has no effect</p>
+		
+		<p><b>NOTE: </b>This may seem like a lot of variables, but most have presets or are for small tweaks to get the exact functionality desired. See <a href="#howto1">Getting Started and Asset Setup</a> for how to start using this asset in your project.</p>
+		
+		
+		<div class="pushdown" id="howto1"></div>
+		<h2>Getting Started and Asset Setup</h2>
+		<p>The only required setup for this asset is to fill in the Timed Rewards list with as many objects as desired for users and set up any custom rewards. This section will cover how to do so along with specific sample scenarios to aid in any setup.</p>
+		
+		<div class="lilpushdown" id="howto2"></div>
+		<h3>First Steps</h3>
+		<p>Either open a demo scene provided or drag and drop the <i>PJ_UserInterface</i> prefab or one of the <i>PJ_TimedRewards</i> prefabs in to one of your own scenes. 
+		<u>Ensure</u> the scene has an <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/EventSystem.html">Event System</a> object, without this, the asset will not function properly. NOTE: <i>PJ_CurrencyController</i> and <i>PJ_TimedRewards</i> are 
+		children of the <i>PJ_UserInterface</i> prefab which is used to display any currencies claimed. <u>Using only the Timed Rewards prefab will keep track of rewards claimed/missed, but not record or display any currencies collected</u>.</p>
+		<p><b>NOTE: </b>If the TextMesh Pro asset is not already installed and imported, upon running a scene with the Timed Rewards prefab, Unity will prompt to import TMP Essentials; this must be imported for text objects to appear properly. Importing the Extras is not required.</p>
+		
+		<div class="lilpushdown" id="howto3"></div>
+		<h3>Using the <i>PJ_UserInterface</i> Prefab</h3>
+		<p>If using the <i>PJ_UserInterface</i> prefab, currencies are recorded and displayed by the <i>PJ_CurrencyController</i> within <i>PJ_UserInterface</i> prefab. Feel free to unpack the prefab and adapt the prefab’s interface to be part of your own scene.</p>
+		
+		<div class="lilpushdown" id="howto4"></div>
+		<h3>Using ONLY the <i>PJ_TimedRewards</i> Prefab</h3>
+		<p>If using only a Timed Rewards prefab, the main reward types won’t exist in the current context since the Currency Controller is part of the User Interface prefab. You will need to <a href="#howto6">have your own custom methods</a> to be called upon reward collection which will 
+		need to record and display any rewards given. There is a ‘Custom’ reward type to handle this scenario.</p>
+		
+		<div class="lilpushdown" id="howto5"></div>
+		<h3>Setting Up a Timed Reward</h3>
+		<p>Click on the <i>PJ_TimedRewards</i> prefab in your scene and navigate to the Inspector and open the Timed Rewards array. Set the array to have as many elements as you would like as this will represent the number of rewards to be claimed. Open the array and open the first element. 
+		If using the <i>PJ_UserInterface</i> prefab, any Reward Type can be selected and used, otherwise if only using the Timed Rewards prefab or a custom reward is desired, a ‘Custom’ Reward Type should be selected. A title can be entered to show above the reward, otherwise all elements will be automatically assigned an index value as its title. 
+		Then, set a sprite to be displayed which will represent the reward being given. Finally, enter the ‘Subtitle or Amount’ which is used to calculate the amount of reward gained; if non-numbers are entered, a currency amount can’t be gained and will be for display only. 
+		This also makes it possible to set ‘blank’ rewards which could either give no reward or set the Reward Type to ‘Custom’ and give specific rewards depending on the scenario.</p>
+		
+		<div class="lilpushdown" id="howto6"></div>
+		<h3>How to Use or Code for a Custom Timed Reward</h3>
+		<p>If a Reward Type is set to Custom, custom methods must be entered and called from a specific script to work properly with this asset. Navigate to the project panel and open the script at <i>Assets/PleebieJeebies/TimedRewards/Scripts/PJ_CustomRewardCall.cs</i>. When a Timed Reward is claimed with the Custom Reward Type, 
+		the <i>CustomRewardCall()</i> method is called. Within this method is where any custom rewards should be given, recorded, and displayed for the user. Code examples have been provided to show how you can differentiate between collected rewards by exposed properties such as the title chosen or the element number in the array. You can even code for blank or null rewards if desired.</p>
+		<p>Again, these properties have been exposed so any custom reward can be given, but you must also use these properties to properly record and display these rewards to the user, the Timed Rewards prefab only keeps track of reward collection state. See <a href="#final">PlayerPrefs Information and Final Thoughts</a> for suggestions on recording data.</p>
+		
+		<div class="lilpushdown" id="howto7"></div>
+		<h3>Specifications and Personalization</h3>
+		<p>Once you’ve set up your Timed Rewards and adapted your scene to display any rewards given, you’re ready for any final tweaks to the Timed Rewards system. Each variable is documented with tooltips, so hovering over each one will give more information on its purpose. Note that these variables won’t function properly if changed during runtime. 
+		You can also see <a href="#config">Configuration</a> for information on each variable in this script.</p>
+		
+		<div class="lilpushdown" id="howto8"></div>
+		<h3>How to Rollover Users to a New Set of Timed Rewards</h3>
+		<p>Once your Timed Rewards system is set up, this section will cover how to continue to update your Timed Rewards while rolling out updates to your users. Under the Specifications section of the Timed Rewards prefab, there is a Boolean named ‘Reset Rewards On Updated App Version’, this is set true by default, but must be true to accomplish reward updates.</p>
+		<p>Once this is true, navigate to Edit > Project Settings > Player > Version (<b>NOTE</b>: <a href="https://docs.unity3d.com/ScriptReference/Application-version.html">Version</a> not Bundle Version Code).</p>
+		<p>Change the version value to something new, fill in a new set of Timed Rewards if desired, and push this update out to your users. Now when a user updates and starts the application, this version value has changed; this will trigger a check to reset the rewards to the updated Timed Rewards array and reset any progress gained by users up to this point. 
+		Thus allowing the developer to create a full set of new rewards to be collected for users.</p>
+		<p>Note that any time the Version is changed along with the named Boolean being set true, that it will reset rewards for users. If this is not desired, simply uncheck the Boolean.</p>
+		
+		
+		<div class="pushdown" id="missed"></div>
+		<h2>‘Missed Interval’ and Making Changes</h2>
+		
+		<p>One of the specifications, ‘Task After A Reward Unlocks’, may be used to punish users for missing a reward interval either by missing the reward for that interval or by resetting reward progress. A ‘Missed Interval’ occurs when a user is not in the application for the entirety of a ‘Timed Reward Interval’. For example, if the reward is set to unlock every 24 hours, 
+		a user must be absent for 24 hours to trigger a Missed Interval. This means if a user is absent for less than 24 hours, they will have not missed the interval and thus can receive a reward. When using the reset option, if the user unlocks a reward interval but forgets to claim the reward and then misses a reward interval, those rewards will be reset and lost. As mentioned, 
+		this feature is designed to punish users for taking too much time away from your app, so it should be used with caution. There is another option named ‘Wait for Claim’ which will stop the timer after a reward is unlocked whether the user is in the app or not. This means the user must claim the unlocked reward before the timer for the next reward will begin. 
+		Using the above example of a 24 hour reward unlock, a user could be absent for two or more days and using the ‘Wait for Claim’ option will mean the user will only unlock a single reward. 
+		If punishing users is not desired, then simply set the ‘Task After A Reward Unlocks’ to ‘Continue’.</p>
+		<p>This asset makes dynamic changes to different texts throughout the cycle of the rewards system. To make changes to any text in this asset, some can be made directly to the text object of choice, but most changes are made within the <i>PJ_TimedRewards</i> script. This script is well documented in attempt to aid any searches for specific text or code changes.</p>
+		<p>When setting the ‘Timed Reward Interval Duration Hours’, fractions or decimals can be entered to get accurate intervals down to the second. For second intervals, use the formula x/60/60, where x represents how many seconds each interval should have; for minute intervals, use x/60, where x represents how many minutes each interval should have.</p>
+		<p>The main demo scene provided shows different ways to open the rewards interface: use a button click event to trigger the game object to activate, serialize the object in code and activate it like in the <i>PJ_UserInterface</i> script, or use the provided reward availability panel which is activated though the Boolean ‘Show Reward Availability Panel’.</p>
+		
+		
+		<div class="pushdown" id="final"></div>
+		<h2>PlayerPrefs Information and Final Thoughts</h2>
+		
+		<p>This asset uses <a href="https://docs.unity3d.com/ScriptReference/PlayerPrefs.html">PlayerPrefs</a> to record and store the data required to remember what users have or haven’t done. Because of this it should be noted that clearing PlayerPrefs will effectively reset the data which will cause the Timed Reward system to restart. This is by design and is used for <a href="#howto8">app updates or reward rollovers</a>. 
+		A way to reset all PlayerPrefs in Unity is Edit > Delete Player Prefs, but <u>be careful</u> as this will delete all PlayerPrefs for the active project. There is also a button in the demo scenes provided named ‘Delete Pleebie Jeebies Player Prefs’ which is tied to a reset method. This method will clear only the PlayerPrefs used in this asset and is very helpful for any pre-production testing desired.</p>
+		<p>In terms of persistence, PlayerPrefs will persist between scenes and through an app update, but not through an app delete and reinstall. For complete persistence and to avoid data manipulation, developers should both encrypt their data and store it in a database server. If this is desired, all PlayerPref calls will need to be replaced with appropriate database calls.</p>
+		<p>This asset also uses PlayerPrefs to create timestamps which can be manipulated by changing the time on the device running the app. This is an issue for any programmer who uses timestamps in any way. Again to avoid this, a server time could be used to avoid any checking of the local device time, but this would require apps to force an internet connection and if one isn’t present, 
+		the check would fall back on to the local device time and thus cause the same problem. This means developers must choose between forcing their users to have internet and losing any ‘offline’ users or to allow users to manipulate time or data. Most users are not inclined to change their device time as this can intrude with many other applications and ‘cheaters’ tend to manipulate save files instead of device time. 
+		Since forcing internet connection is not ideal for most users and for other reasons mentioned, server time is not an available feature for this asset and only uses local device time.</p>
+		
+		
+		</br>
+		<p>If you are experiencing any issues, contact our support team at:</br>
+		<a href="mailto:support@pleebiejeebies.com">support@pleebiejeebies.com</a></p>
+	</div>
+	
+	<img src="CompanyLogo.png" alt="Pleebie Jeebies Company Logo">
+	</br>
+	</br>
+	<a href="#top">Back to Top of Page</a>
+</body>
+</html>
