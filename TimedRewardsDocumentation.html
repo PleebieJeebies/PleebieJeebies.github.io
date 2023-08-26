@@ -166,17 +166,17 @@ li {
 		
 		<div class="pushdown" id="files"></div>
 		<h2>Asset Files Hierarchy</h2>
-		<p>All files are located under <b>Assets/PleebieJeebies/TimedRewards/</b>. This asset also uses the <a href="https://docs.unity3d.com/Manual/com.unity.textmeshpro.html">TextMeshPro</a> asset with some of the files being altered under <b>Assets/TextMeshPro/Examples & Extras/Resources/Fonts & Materials/</b>.</p>
+		<p>All files are located under <b>Assets/PleebieJeebies/TimedRewards/</b>. This asset also uses the <a href="https://docs.unity3d.com/Manual/com.unity.textmeshpro.html">TextMeshPro</a> asset with files existing under <b>Assets/TextMeshPro/</b> after importing. See <a href="#install">Installation</a> for more detail.</p>
 		<div class="imageContainer">
 			<img src="TimedRewards/FileHierarchy.PNG" alt="File hierarchy">
 		</div>
 		
 		<h3>Prefabs Folder</h3>
 		<p>Inside the <b>Prefabs/</b> folder, you will find the three prefabs used in the Main Demo Scene, 
-		the <i>PJ_CurrencyController</i>, <i>PJ_TimedRewards</i>, and <i>PJ_UserInterface</i>, as well as some variants of the Timed Rewards prefab. 
+		the <i>PJ_CurrencyController</i>, <i>PJ_TimedRewards</i>, and <i>PJ_UserInterface</i>, some variants of the Timed Rewards prefab, as well as some TextMeshPro files. 
 		Any Timed Rewards prefab can be placed in a scene and function after having set up the desired rewards for users. <a href="#howto5">Read here for more information 
 		on how to set up rewards</a>. The Currency Controller prefab is an optional addition to a scene which must be placed on a <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UICanvas.html">Canvas</a> and will display currency gained 
-		set up in the Timed Rewards list. The User Interface prefab contains a fully prepared and functional canvas for the Currency Controller and the Timed Rewards prefabs.</p>
+		set up in the Timed Rewards list. The User Interface prefab contains a fully prepared and functional canvas for the Currency Controller and the Timed Rewards prefabs. The TextMeshPro files are used for the fonts throughout the asset.</p>
 		
 		<h3>Scenes Folder</h3>
 		<p>Inside the <b>Scenes/</b> folder, you will find three functional sample scenes showcasing the Timed Rewards asset. These scenes have been prepared with prefabs to sample from and to quickly grasp an understanding of this asset. 
@@ -204,11 +204,12 @@ li {
 
 		<ul>
 			<li>Download the asset inside the Unity Editor <i>Package Manager</i> window (Window > Package Manager from the Unity Editor toolbar)</li>
-			<li>Import the entirety of the asset package into the project, including the TextMeshPro files. <u>Without these files, the asset will not work properly</u>. See the <a href="#files">Asset Files Hierarchy</a> TextMesh Pro section for more information.</li>
+			<li>Import the entirety of the asset package into the project.</li>
 			<div class="imageContainer">
 				<img src="TimedRewards/FileImport.PNG" alt="Import Entirety of Asset Package">
 			</div>
-			<li>If the TextMesh Pro asset is not already installed and imported, upon running a scene with the Timed Rewards prefab, Unity will prompt to import TMP Essentials; <u>this must be imported for text objects to appear properly</u>. Importing the Extras is not required.</li>
+			<li>If the TextMesh Pro asset is not already installed and imported, upon running a scene with the Timed Rewards prefab, Unity will prompt to import TMP Essentials; <u>this must be imported for text objects to appear properly</u>. Note that you can’t import while Unity is in ‘Play’ mode. 
+			Importing the Extras is not required. See the <a href="#files">Asset Files Hierarchy</a> TextMesh Pro section for more information.</li>
 			<div class="imageContainer">
 				<img src="TimedRewards/TextMeshProImport.PNG" alt="Import Entirety of Asset Package">
 			</div>
